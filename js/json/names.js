@@ -1,0 +1,5 @@
+[
+"Arnold",
+"Berthold",
+"Christian"
+]

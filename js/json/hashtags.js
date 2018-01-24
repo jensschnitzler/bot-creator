@@ -1,0 +1,13 @@
+[
+"#MissUniverse",
+"#Philippines",
+"#Thailand",
+"#giveaway",
+"#BTS",
+"#2017MAMA",
+"#InfinityWar",
+"#EXO",
+"#AMAs",
+"#NowPlaying",
+"#bitcoin"
+]
