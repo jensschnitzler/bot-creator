@@ -375,6 +375,15 @@ hr {
   border-radius: 0 0 1rem 1rem;
   overflow-y: auto;
   overflow-x: hidden;
+  transition: all 2s;
+}
+
+.flex-column.hidden {
+  max-height: 0vw;
+  max-width: 0vw;
+  padding: 0;
+  border: 0 !important;
+  flex: 0 0 auto;
 }
 
 .c-header {
@@ -383,8 +392,7 @@ hr {
   top: 0;
 }
 
-.flex-column:nth-child(3) {
-  border-right: 1px solid #000046;
+.flex-column:nth-child(3), .flex-column:nth-child(4) {
   border-left: 1px solid #000046;
 }
 
@@ -855,9 +863,10 @@ hr {
 .load-bar span {
   display: block;
   height: 100%;
-  width: 50%;
+  width: 0%;
   background: white;
   border-radius: .8rem;
+  transition: all 0s ease 0s;
 }
 
 .load-status span, .load-status * span {

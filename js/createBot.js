@@ -359,7 +359,7 @@
     var interval = myTime/100;
     /* get loading elements */
     var myLoadContainer = $( myElement );
-    var myLoadBar = myLoadContainer.children('.load-bar');
+    var myLoadBar = myLoadContainer.find('.load-bar span');
     var myLoadStatus = myLoadContainer.children('.load-status');
     /* show loading elements */
     myLoadContainer.slideDown().animate({opacity: 1});
@@ -386,6 +386,7 @@
 
   function loadBot( myTime ) {
     loadProcess( myTime, '.loadBot', newBot );
+    $('.inventory-unit').removeClass('hidden');
   };
 
   function loadPost( myTime ) {

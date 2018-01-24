@@ -1,6 +1,6 @@
 /*--- Global Variables ---*/
 var objectiveArray = ['foster fame','spamming','mischief'];
-var supportingArray = ['#trump','#brexit','#bernie','#russia'];
+var supportingArray = ['#trump','#brexit','#bernie','#russia','#maga','#metoo'];
 var mySelectObjective = $('.select-objective');
 var mySelectSupporting = $('.select-supporting');
 
