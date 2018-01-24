@@ -1,5 +1,6 @@
 /*--- Global Variables ---*/
   var randomTime = Math.floor((Math.random() * 1000) + 1);
+  var crazySlider = false;
 
 /*--- Functions ---*/
 
@@ -32,10 +33,12 @@
 
   $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
 
-    $('input.slider').each( function() {
-        var mySlider = $( this );
-        crazySlider( mySlider );
-      });
+    if( crazySlider === true ){
+      $('input.slider').each( function() {
+          var mySlider = $( this );
+          crazySlider( mySlider );
+        });
+    }
 
   });
 

@@ -198,11 +198,13 @@ hr {
 }
 
 .login-level {
+  display: none;
   background: #000046;
   z-index: 400;
 }
 
 .support-level {
+  display: none;
   background: rgba(102, 137, 255, 0.7);
   z-index: 300;
 }
@@ -284,6 +286,10 @@ hr {
   max-width: 23rem;
 }
 
+.myBubble p.hashtag {
+  color: #6689ff;
+}
+
 .profilePic {
   box-shadow: inset 0px 0.4rem 0.8rem 0px rgba(255, 255, 255, 0.2), inset 0 -0.3rem 0.8rem rgba(0, 0, 0, 0.1);
   height: 4rem;
@@ -314,7 +320,7 @@ hr {
 .myButton {
   min-width: 8rem;
   curor: pointer;
-  padding: .5rem .6rem 0 .6rem;
+  padding: .55rem .6rem 0 .6rem;
 }
 
 .myButton:hover {
@@ -330,6 +336,7 @@ hr {
   color: #fafafa;
 }
 
+/* Units */
 /* CONTAINER */
 .flex-container {
   height: auto;
@@ -355,7 +362,6 @@ hr {
   padding: 0rem 1rem;
   background: #fafafa;
   position: relative;
-  display: block;
 }
 
 .flex-header {
@@ -449,7 +455,9 @@ hr {
 }
 
 .console {
-  padding: .5rem;
+  padding: .5rem .5rem 1rem .5rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .console * {
@@ -471,6 +479,8 @@ hr {
 
 /* TERMINAL */
 .terminal {
+  max-height: 0px;
+  height: 20vh;
   width: 100%;
   background: red;
   position: absolute;
@@ -478,10 +488,8 @@ hr {
   left: 0;
   z-index: 1000;
   padding: 0 0 0 1rem;
-  max-height: 20vh;
   overflow-y: auto;
   overflow-x: hidden;
-  border-bottom: 1px solid #000046;
 }
 
 .terminal * {
@@ -528,6 +536,11 @@ hr {
 
 .terminal .t-content p::before {
   content: '…';
+}
+
+.error .terminal {
+  max-height: auto;
+  border-bottom: 1px solid #000046;
 }
 
 /* FEED */
@@ -806,6 +819,10 @@ hr {
 /* DEBUG */
 .debug {
   background: red;
+}
+
+.debug2 {
+  background: green;
 }
 
 /* LOADING */

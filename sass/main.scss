@@ -216,12 +216,12 @@
   }
 
   .login-level {
-    //display: none;
+    display: none;
     background: $color-Background;
     z-index: 400;
   }
   .support-level {
-    //display: none;
+    display: none;
     background: rgba(102,137,255, .7);
     z-index: 300;
     //width:  0;
@@ -290,7 +290,12 @@
       text-align: left;
       text-transform: none;
       max-width: 23rem;
+
+      &.hashtag {
+        color: $color-ProfileFill;
+      }
     }
+
   }
   .profilePic {
     box-shadow:inset 0px .4rem .8rem 0px rgba(255,255,255,.2), inset 0 -.3rem .8rem rgba(0,0,0,.1);
@@ -319,7 +324,7 @@
   .myButton {
     min-width: 8rem;
     curor: pointer;
-    padding: .5rem .6rem 0 .6rem;
+    padding: .55rem .6rem 0 .6rem;
 
     &:hover {
       //background:linear-gradient(to bottom, #333 5%, #222 100%);
@@ -336,6 +341,11 @@
     }
   }
 
+
+/* Units */
+  .inventory-unit, .feed-unit {
+    //display: none;
+  }
 /* CONTAINER */
 
   .flex-container {
@@ -360,7 +370,7 @@
     padding: 0rem 1rem;
     background: $color-Interface;
     position: relative;
-    display: block;
+    //display: block;
   }
   .flex-header {
     width: 100vw;
@@ -375,6 +385,7 @@
     //max-width: 60vw;
   }
   .c-header, .c-content {
+
     //padding: .5rem;
     //border-bottom: 1px solid black;
     //border: 1px solid $color-Background;
@@ -391,6 +402,7 @@
     top:  0;
   }
   .c-content {
+
     //max-height: 90vh;
     //min-height: 1.5rem;
     //padding: 0;
@@ -447,7 +459,9 @@
     padding-top: 20vh;
   }
   .console {
-    padding: .5rem;
+    padding: .5rem .5rem 1rem .5rem;
+    max-width: 400px;
+    margin: 0 auto;
   }
   .console * {
     /*
@@ -470,6 +484,9 @@
 
 /* TERMINAL */
   .terminal {
+    //max-height: 20vh;
+    max-height: 0px; // hide terminal as long as we are not in a phase of error
+    height: 20vh;
     width: 100%;
     background:red;
     position: absolute;
@@ -477,10 +494,8 @@
     left: 0;
     z-index: 1000;
     padding: 0 0 0 1rem;
-    max-height: 20vh;
     overflow-y: auto;
     overflow-x: hidden;
-    border-bottom: 1px solid $color-Background;
 
     * {
       color: $color-Interface;
@@ -510,6 +525,10 @@
         content: '…';
       }
     }
+  }
+  .error .terminal {
+    max-height: auto;
+    border-bottom: 1px solid $color-Background;
   }
 
 /* FEED */
@@ -750,6 +769,9 @@
 /* DEBUG */
   .debug {
     background: red;
+  }
+  .debug2 {
+    background: green;
   }
 
 /* LOADING */

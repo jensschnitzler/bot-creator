@@ -29,7 +29,7 @@ VIRTUAL ATTITUDES
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body class="error">
+    <body class=""> <!-- can contain classes like "error" to determine the overall phase -->
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -145,28 +145,28 @@ VIRTUAL ATTITUDES
 
                         <ul class="console-list">
                             <li class="console-element">
-                                <h3>Aggressive</h3>
-                                <input type="range" min="1" max="100" value="100" class="slider">
-                            </li>
-                            <li class="console-element">
-                                <h3>Conservative</h3>
-                                <input type="range" min="1" max="100" value="0" class="slider">
-                            </li>
-                            <li class="console-element">
-                                <h3>age 35 years</h3>
-                                <input type="range" min="15" max="85" value="35" class="slider">
-                            </li>
-                            <li class="console-element">
-                                <h3>average activity</h3>
+                                <h3>moderate</h3> <!-- passive/moderate/agressive/highly agressive -->
                                 <input type="range" min="1" max="100" value="50" class="slider">
                             </li>
                             <li class="console-element">
-                                <h3>objective</h3>
-                                <a name="hashtags" class="select myButton">Foster Fame</a>
+                                <h3>Conservative</h3> <!-- extrem-conservative/conservative/apolitical/liberal/progressive -->
+                                <input type="range" min="1" max="100" value="50" class="slider">
+                            </li>
+                            <li class="console-element">
+                                <h3>age 35 years</h3> <!-- how old is the average internet user -->
+                                <input type="range" min="15" max="75" value="45" class="slider">
+                            </li>
+                            <li class="console-element">
+                                <h3>average activity</h3> <!-- low/average/high -->
+                                <input type="range" min="1" max="100" value="50" class="slider">
+                            </li>
+                            <li class="console-element">
+                                <h3>objective</h3> <!-- foster fame/spamming/mischief -->
+                                <a name="objective" class="select myButton select-objective">foster fame</a>
                             </li>
                             <li class="console-element">
                                 <h3>supporting</h3>
-                                <a name="hashtags" class="select myButton">#Trump</a>
+                                <a name="supporting" class="select myButton select-supporting">#Trump</a>
                             </li>
                             <hr>
                             <li class="console-element">
@@ -183,7 +183,7 @@ VIRTUAL ATTITUDES
                     </div>
                 </div>
 
-                <div class="flex-column hidden">
+                <div class="flex-column feed-unit">
                     <div class="c-header">Feed</div>
                     <div class="c-content feed">
                         <!--
@@ -199,12 +199,18 @@ VIRTUAL ATTITUDES
                         <ul class="feed-list">
                             <li class="feed-post">
                                 <div class="profilePic"></div>
-                                <div class="myBubble"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p></div>
+                                <div class="myBubble">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p>
+                                    <p class="hashtag">#likeforfollow #likeforlike #like4follow #like4like #likesforlikes #likes4likes</p>
+                                </div>
                             </li>
 
                             <li class="feed-post reverse">
                                 <div class="profilePic"></div>
-                                <div class="myBubble"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p></div>
+                                <div class="myBubble">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p>
+                                    <p class="hashtag">#love #instagood #me #tbt #cute #follow</p>
+                                </div>
                             </li>
 
                             <li class="feed-post placeholder">
@@ -214,22 +220,31 @@ VIRTUAL ATTITUDES
 
                             <li class="feed-post">
                                 <div class="profilePic"></div>
-                                <div class="myBubble"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p></div>
+                                <div class="myBubble">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p>
+                                    <p class="hashtag">#followme #photooftheday #happy #tagforlikes #beautiful #girl #selfie #picoftheday #smile #friends #like4like #instadaily #fashion #igers #instalike #food</p>
+                                </div>
                             </li>
                             <li class="feed-post reverse">
                                 <div class="profilePic"></div>
-                                <div class="myBubble"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p></div>
+                                <div class="myBubble">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p>
+                                    <p class="hashtag">#cofveve #IndyRef</p>
+                                </div>
                             </li>
                             <li class="feed-post">
                                 <div class="profilePic"></div>
-                                <div class="myBubble"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p></div>
+                                <div class="myBubble">
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>…</p>
+                                    <p class="hashtag">#donaldtrump #trump #potus #cnn #maga #twitter #america #media #news #foxnews #fakenews #usa</p>
+                                </div>
                             </li>
 
                         </ul>
                     </div>
                 </div>
 
-                <div class="flex-column hidden">
+                <div class="flex-column inventory-unit">
                     <div class="c-header">
                         <h1 class="inactive">Inventory</h1>
                     </div>
@@ -261,6 +276,7 @@ VIRTUAL ATTITUDES
         <script src="js/windows.js"></script>
         <script src="js/slider.js"></script>
         <script src="js/silva.js"></script>
+        <script src="js/selection.js"></script>
         <!--<script src="js/scroller.js"></script>-->
     </body>
 </html>
