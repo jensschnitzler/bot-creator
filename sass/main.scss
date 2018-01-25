@@ -125,12 +125,38 @@
 
 /* -----  Native HTML  ---------------------------------------- */
 
+  body.error:before {
+    pointer-events: none;
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: .1;
+    background-image: url('../img/snippets/gritter.gif');
+  }
+
   html, body {
     //background: $color-Default;
     //background:linear-gradient(to bottom, #333 0%, #111 100%);
     //color: black;
     background: $color-Background;
   }
+
+  body.rotate {
+    width: 100vh;
+    height: 100vw;
+    display: block;
+    position: fixed;
+    transform-origin: 0 0;
+    top: 0;
+    left: 0;
+    transform: translate(0,100vh) rotate(-90deg);
+  }
+
   html, html * {
     @include font-style-basic;
     box-sizing: border-box;
@@ -208,20 +234,28 @@
 
 
 /* LEVEL */
+
   .level {
     display: block;
     width:  100vw;
     height: 100vh;
     position: fixed;
+    &.hidden {
+      max-height: 0vh;
+      max-width: 0vw;
+      * {
+        display: none;
+      }
+    }
   }
 
   .login-level {
-    display: none;
+    //display: none;
     background: $color-Background;
     z-index: 400;
   }
   .support-level {
-    display: none;
+    //display: none;
     background: rgba(102,137,255, .7);
     z-index: 300;
     //width:  0;
@@ -371,6 +405,7 @@
     background: $color-Interface;
     position: relative;
     //display: block;
+
   }
   .flex-header {
     width: 100vw;
@@ -378,6 +413,7 @@
     border-bottom: 1px solid $color-Background;
   };
   .flex-column {
+    flex: 1 2 auto;
     max-height: 90vh;
     border-radius: 0 0 1rem 1rem;
     overflow-y: auto;
@@ -390,6 +426,13 @@
       padding: 0;
       border:0 !important;
       flex: 0 0 auto;
+    }
+    &.feed-unit{
+      //flex: 2 1 auto;
+      padding-bottom: 1rem;
+    }
+    &.inventory-unit{
+      //flex: 1 4 auto;
     }
   }
   .c-header, .c-content {
@@ -643,9 +686,10 @@
 
 /* inventory */
   .inventory-list .placeholder {
-    max-width: 10rem;
-    padding: .5rem;
-    text-align: left;
+    max-width: 8rem;
+    padding: .5rem 0;
+    margin: 0 auto;
+    //text-align: left;
   }
 
 /* WINDOW */

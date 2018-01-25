@@ -76,8 +76,33 @@ p::selection {
 }
 
 /* -----  Native HTML  ---------------------------------------- */
+body.error:before {
+  pointer-events: none;
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: .1;
+  background-image: url("../img/snippets/gritter.gif");
+}
+
 html, body {
   background: #000046;
+}
+
+body.rotate {
+  width: 100vh;
+  height: 100vw;
+  display: block;
+  position: fixed;
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  transform: translate(0, 100vh) rotate(-90deg);
 }
 
 html, html * {
@@ -197,14 +222,21 @@ hr {
   position: fixed;
 }
 
-.login-level {
+.level.hidden {
+  max-height: 0vh;
+  max-width: 0vw;
+}
+
+.level.hidden * {
   display: none;
+}
+
+.login-level {
   background: #000046;
   z-index: 400;
 }
 
 .support-level {
-  display: none;
   background: rgba(102, 137, 255, 0.7);
   z-index: 300;
 }
@@ -371,6 +403,7 @@ hr {
 }
 
 .flex-column {
+  flex: 1 2 auto;
   max-height: 90vh;
   border-radius: 0 0 1rem 1rem;
   overflow-y: auto;
@@ -384,6 +417,10 @@ hr {
   padding: 0;
   border: 0 !important;
   flex: 0 0 auto;
+}
+
+.flex-column.feed-unit {
+  padding-bottom: 1rem;
 }
 
 .c-header {
@@ -659,9 +696,9 @@ hr {
 
 /* inventory */
 .inventory-list .placeholder {
-  max-width: 10rem;
-  padding: .5rem;
-  text-align: left;
+  max-width: 8rem;
+  padding: .5rem 0;
+  margin: 0 auto;
 }
 
 /* WINDOW */

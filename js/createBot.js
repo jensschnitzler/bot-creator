@@ -293,7 +293,7 @@
                             .html('');
       var myBubble = $( '<div/>' )
                             .addClass( 'myBubble' )
-                            .html( myBotMessage );
+                            .html( '<p>' + myBotMessage + '</p>' );
 
       if ( !  $( '.feed-post' ).first().hasClass( 'reverse' ) ) {
         myListElement.addClass( 'reverse' );
@@ -391,6 +391,7 @@
 
   function loadPost( myTime ) {
     loadProcess( myTime, '.loadPost', newPost );
+    $('.feed-unit').removeClass('hidden');
   };
 
   function chatBots(){
@@ -448,7 +449,8 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
   // CLICK "NEW POST":
   var postClicks = 0;
 
-  $( ".create-post" ).click( function() {
+  $( document ).on("click", ".profilePic", function() {
+  //$( ".create-post" ).click( function() { // ".create-post, .inventory-list .profilePic"
     var myButton = $( this );
 
     if (!myButton.hasClass('clicked')) {
@@ -466,7 +468,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
         var loadingTime = 2000;
         setInterval( function() {
           loadPost( loadingTime );
-        }, 2000);
+        }, 5000);
       }
 
     }

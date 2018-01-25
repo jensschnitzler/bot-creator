@@ -29,7 +29,7 @@ VIRTUAL ATTITUDES
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body class=""> <!-- can contain classes like "error" to determine the overall phase -->
+    <body class="<!--rotate-->"> <!-- can contain classes like "error" to determine the overall phase -->
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -40,7 +40,7 @@ VIRTUAL ATTITUDES
             </div>
         </div>
 
-        <div class="level support-level"> <!-- for notifications and alerts -->
+        <div class="level support-level hidden"> <!-- for notifications and alerts -->
 
             <div class="window support">
                 <div class="w-header">note</div>
@@ -85,7 +85,7 @@ VIRTUAL ATTITUDES
             </div>
         </div>
 
-        <div class="level login-level"> <!-- for login screen -->
+        <div class="level login-level hidden"> <!-- for login screen -->
             <div class="window login">
                 <div class="w-header">social bot creator</div>
                 <div class="w-content">
@@ -192,11 +192,12 @@ VIRTUAL ATTITUDES
                         </div>
                         -->
                         <div class="load-container loadPost">
-                            <div class="load-bar"></div>
+                            <div class="load-bar"><span></span></div>
                             <p class="load-status"></p>
                         </div>
-                        <a class="create-post myButton inactive">new post</a>
+                        <!--<a class="create-post myButton inactive">new post</a>-->
                         <ul class="feed-list">
+                            <!--
                             <li class="feed-post">
                                 <div class="profilePic"></div>
                                 <div class="myBubble">
@@ -204,7 +205,6 @@ VIRTUAL ATTITUDES
                                     <p class="hashtag">#likeforfollow #likeforlike #like4follow #like4like #likesforlikes #likes4likes</p>
                                 </div>
                             </li>
-
                             <li class="feed-post reverse">
                                 <div class="profilePic"></div>
                                 <div class="myBubble">
@@ -212,12 +212,6 @@ VIRTUAL ATTITUDES
                                     <p class="hashtag">#love #instagood #me #tbt #cute #follow</p>
                                 </div>
                             </li>
-
-                            <li class="feed-post placeholder">
-                                <div class="myBubble inactive"><em><span>Your conversation is empty</span><span>create a bot and get started</span></em></div>
-                            </li>
-
-
                             <li class="feed-post">
                                 <div class="profilePic"></div>
                                 <div class="myBubble">
@@ -239,6 +233,13 @@ VIRTUAL ATTITUDES
                                     <p class="hashtag">#donaldtrump #trump #potus #cnn #maga #twitter #america #media #news #foxnews #fakenews #usa</p>
                                 </div>
                             </li>
+                            -->
+
+                            <!--
+                            <li class="feed-post placeholder">
+                                <div class="myBubble inactive"><em><span>Your conversation is empty</span><span>create a bot and get started</span></em></div>
+                            </li>
+                            -->
 
                         </ul>
                     </div>
@@ -250,6 +251,7 @@ VIRTUAL ATTITUDES
                     </div>
                     <div class="c-content">
                         <ul class="inventory-list">
+                            <li class="placeholder inactive"><em>Click on bot to<br>start posting activity</em></li>
                             <!--
                             <li class="placeholder inactive"><em>There<br>are<br>no<br>bots<br>in<br>your<br>inventory<br>yet</em></li>
                             -->
@@ -278,6 +280,7 @@ VIRTUAL ATTITUDES
         <script src="js/slider.js"></script>
         <script src="js/silva.js"></script>
         <script src="js/selection.js"></script>
+        <script src="js/features.js"></script>
         <!--<script src="js/scroller.js"></script>-->
     </body>
 </html>
