@@ -2,6 +2,7 @@
 // silva.js is a chaos monkey tool, that removes bits and pieces from the websites code.
 
 /*--- Global Variables ---*/
+
   var silvaTime = false;
 
 /*--- Functions ---*/

@@ -299,6 +299,10 @@
         myListElement.addClass( 'reverse' );
       }
 
+      if ( botCounter >= 10 ) {
+        myListElement.addClass( 'error-1' );
+      }
+
       myListElement.append(myProfilePic).append(myBubble).prependTo( feedList );
 
       jumpBall( myInventoryProfilePic, myProfilePic );
@@ -458,17 +462,26 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
       postClicks++; // increase postClicks by 1
       console.log('create-post clicked - postClicks: ' + postClicks );
 
-      if( postClicks <= 3 ){
-        var loadingTime = 3000;
-        loadPost( loadingTime );
-        setTimeout( function() {
-          myButton.removeClass( 'clicked' );
-        }, 4000); // loadingTime + time to slideUp loading elements
+      var loadingTime = 3000;
+      loadPost( loadingTime );
+      setTimeout( function() {
+        myButton.removeClass( 'clicked' );
+      }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
+
+      if( postClicks === 2 ){
+        error( 'flicker' );
+
+      } else if( postClicks === 3 ){
+        error( 'body' );
+
+      } else if( postClicks === 4 ){
+        /*do some stuff*/
+
+      } else if( postClicks === 5 ){
+        error( 'autobot' );
+
       } else {
-        var loadingTime = 2000;
-        setInterval( function() {
-          loadPost( loadingTime );
-        }, 5000);
+        /*do nothing*/
       }
 
     }

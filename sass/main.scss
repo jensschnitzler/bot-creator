@@ -68,7 +68,7 @@
   $color-ElementFill:     rgb(255,255,255);
   $color-ElementFillDark: rgb(150,150,163);
   $color-ElementBorder:   rgb(130,130,150);
-  $color-ProfileFill:     rgb(102,137,255);
+  $color-ProfileFill:     rgb(102,137,255); //dark blue
   $color-HR:              rgb(190,190,200);
   $color-Alert:           rgb(210,20,30);
 
@@ -539,7 +539,7 @@
     max-height: 0px; // hide terminal as long as we are not in a phase of error
     height: 20vh;
     width: 100%;
-    background:red;
+    background:$color-ProfileFill;
     position: absolute;
     top: 0;
     left: 0;
@@ -578,7 +578,7 @@
     }
   }
   .error .terminal {
-    max-height: auto;
+    max-height: none;
     border-bottom: 1px solid $color-Background;
   }
 
@@ -922,4 +922,15 @@
     -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.3);
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.3);
   }
+}
+
+/* --- Audio --- */
+
+audio {
+  display: block;
+  z-index: -100;
+  position: fixed;
+  top: -100vh;
+  left: -100vw;
+
 }

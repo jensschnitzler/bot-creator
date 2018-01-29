@@ -1,28 +1,71 @@
+/*--- Comment ---*/
+// slider.js manages the range-slider inputs in the console.
+
 /*--- Global Variables ---*/
   var randomTime = Math.floor((Math.random() * 1000) + 1);
-  var crazySlider = false;
+  var crazyTime = false;
+
+
+  var temperValues = {
+    "0": "passive",
+    "1": "moderate",
+    "2": "agressive",
+    "3": "highly agressive"
+  };
+
+  var attitudeValues = {
+    "0": "extrem-con",
+    "1": "conservative",
+    "2": "apolitical",
+    "3": "liberal",
+    "4": "progressive"
+  };
+
+  var activityValues = {
+    "0": "low",
+    "1": "average",
+    "2": "high"
+  };
 
 /*--- Functions ---*/
 
-  function crazySlider( element ){
+  function crazySlider( input, min, max ){
     console.log('### CRAZY SLIDER ###');
     setInterval(function(){
 
-      var random = Math.floor( (Math.random() * 100) + 1 );
+      var random = Math.round( (Math.random() * max) + min );
 
-      //console.log('random: ' + random);
+      input.val( random );
+      displayVals( input );
 
-      element.val(random);
-    }, 100 );
+    }, 200 );
 
-    /*
-    setInterval(function(){
-      var flickerElement = $('.window:visible').random();
-      flicker( flickerElement );
-      randomTime = Math.floor((Math.random() * 1000) + 1);
-    }, 100 + randomTime );
-    */
-  }
+  };
+
+  function displayVals( input ){
+    var myInput = $( input );
+    var myValue = myInput.val();
+    var myTitle = myInput.siblings('.slider-title');
+
+    if( myInput.is('.slider-temper') ) {
+      myTitle.text(temperValues[myValue]);
+
+    } else if( myInput.is('.slider-attitude') ) {
+      myTitle.text(attitudeValues[myValue]);
+
+    } else if( myInput.is('.slider-age') ) {
+      var myAge = myValue;
+      myTitle.text('age ' + myAge + ' years');
+
+    } else if( myInput.is('.slider-activity') ) {
+      myTitle.text(activityValues[myValue] + ' activity');
+
+    } else {
+      myTitle.html( myValue );
+    }
+
+  };
+
 
   // The Random Function
   $.fn.random = function() {
@@ -30,17 +73,30 @@
   }
 
 /*--- Events ---*/
+$( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
 
-  $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
+  $('input.slider').change( function(){
+    displayVals( this );
+  });
 
-    if( crazySlider === true ){
+  $('input.slider').each(function(){
+    displayVals( this );
+  })
+
+  setTimeout(function(){
+
+    if( crazyTime === true ){
       $('input.slider').each( function() {
           var mySlider = $( this );
-          crazySlider( mySlider );
+          var min = mySlider.prop('min');
+          var max = mySlider.prop('max');
+          crazySlider( mySlider, min, max );
         });
     }
 
-  });
+  }, 2000);
+
+});
 
 
 

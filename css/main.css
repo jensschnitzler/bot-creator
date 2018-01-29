@@ -527,7 +527,7 @@ hr {
   max-height: 0px;
   height: 20vh;
   width: 100%;
-  background: red;
+  background: #6689ff;
   position: absolute;
   top: 0;
   left: 0;
@@ -584,7 +584,7 @@ hr {
 }
 
 .error .terminal {
-  max-height: auto;
+  max-height: none;
   border-bottom: 1px solid #000046;
 }
 
@@ -983,4 +983,13 @@ hr {
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Audio --- */
+audio {
+  display: block;
+  z-index: -100;
+  position: fixed;
+  top: -100vh;
+  left: -100vw;
 }

@@ -1,8 +1,11 @@
+/*--- Comment ---*/
+// selection.js manages the selection inputs in the console.
+
 /*--- Global Variables ---*/
-var objectiveArray = ['foster fame','spamming','mischief'];
-var supportingArray = ['#trump','#brexit','#bernie','#russia','#maga','#metoo'];
-var mySelectObjective = $('.select-objective');
-var mySelectSupporting = $('.select-supporting');
+  var objectiveArray = ['foster fame','spamming','mischief','bias public opinion','influence trends','like-follow','discretitize','attack free speech'];
+  var supportingArray = ['#trump','#brexit','#bernie','#russia','#maga','#metoo','#erdogan','#assad'];
+  var mySelectObjective = $('.select-objective');
+  var mySelectSupporting = $('.select-supporting');
 
 /*--- Functions ---*/
 

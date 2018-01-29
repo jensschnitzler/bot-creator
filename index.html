@@ -110,7 +110,7 @@ VIRTUAL ATTITUDES
                     <div class="c-header">social bot creator</div>
                     <div class="c-content">
                         <div class="user-info-container">
-                            <div class="user-img profilePic">
+                            <div class="user-img profilePic audio">
                                 <img src="">
                             </div>
                             <div class="user-details">
@@ -145,20 +145,20 @@ VIRTUAL ATTITUDES
 
                         <ul class="console-list">
                             <li class="console-element">
-                                <h3>moderate</h3> <!-- passive/moderate/agressive/highly agressive -->
-                                <input type="range" min="1" max="100" value="50" class="slider">
+                                <h3 class="slider-title">moderate</h3> <!-- passive/moderate/agressive/highly agressive -->
+                                <input type="range" step=1 min="0" max="3" value="1" class="slider slider-temper">
                             </li>
                             <li class="console-element">
-                                <h3>Conservative</h3> <!-- extrem-conservative/conservative/apolitical/liberal/progressive -->
-                                <input type="range" min="1" max="100" value="50" class="slider">
+                                <h3 class="slider-title">Conservative</h3> <!-- extrem-conservative/conservative/apolitical/liberal/progressive -->
+                                <input type="range" step=1 min="0" max="4" value="2" class="slider slider-attitude">
                             </li>
                             <li class="console-element">
-                                <h3>age 35 years</h3> <!-- how old is the average internet user -->
-                                <input type="range" min="15" max="75" value="45" class="slider">
+                                <h3 class="slider-title">age 35 years</h3> <!-- how old is the average internet user -->
+                                <input type="range" step=1 min="15" max="75" value="45" class="slider slider-age">
                             </li>
                             <li class="console-element">
-                                <h3>average activity</h3> <!-- low/average/high -->
-                                <input type="range" min="1" max="100" value="50" class="slider">
+                                <h3 class="slider-title">average activity</h3> <!-- low/average/high -->
+                                <input type="range" step=1 min="0" max="2" value="1" class="slider slider-activity">
                             </li>
                             <li class="console-element">
                                 <h3>objective</h3> <!-- foster fame/spamming/mischief -->
@@ -267,6 +267,13 @@ VIRTUAL ATTITUDES
             </div>
         </div>
 
+        <!-- Secret Audio Area -->
+
+        <audio id="mySoundClip" loop controls>
+            <source src="https://freesound.org/data/previews/14/14259_18811-lq.mp3"></source>
+            Your browser isn't invited for super fun audio time.
+        </audio>
+
         <!-- JS -->
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -281,6 +288,8 @@ VIRTUAL ATTITUDES
         <script src="js/silva.js"></script>
         <script src="js/selection.js"></script>
         <script src="js/features.js"></script>
+        <script src="js/error.js"></script>
+        <script src="js/sound.js"></script>
         <!--<script src="js/scroller.js"></script>-->
     </body>
 </html>
