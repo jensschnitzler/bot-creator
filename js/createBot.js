@@ -240,6 +240,11 @@
       .appendTo( "head" );
 
     myProfilePic.addClass("profilePic" + botID ).removeAttr('style');
+
+    // change inventory title:
+    var counter = botID + 1; // bescause botID starts with 0
+    $('.inventory-unit .c-header h1').html( 'inventory [' + counter + ']' )
+
   }
 
   function newMessage( message ) {
@@ -416,6 +421,10 @@
     }, 10000);
   };
 
+
+
+
+
 // EVENTS
 $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
 
@@ -468,17 +477,21 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
         myButton.removeClass( 'clicked' );
       }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
 
-      if( postClicks === 2 ){
-        error( 'flicker' );
+
+      if( postClicks >= 1 ){
+        myErrorFunction( 'picMessage' );
+
+      } else if( postClicks === 2 ){
+        myErrorFunction( 'flicker' );
 
       } else if( postClicks === 3 ){
-        error( 'body' );
+        myErrorFunction( 'body' );
 
       } else if( postClicks === 4 ){
         /*do some stuff*/
 
       } else if( postClicks === 5 ){
-        error( 'autobot' );
+        myErrorFunction( 'autobot' );
 
       } else {
         /*do nothing*/
