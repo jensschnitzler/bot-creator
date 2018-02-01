@@ -34,6 +34,8 @@ VIRTUAL ATTITUDES
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
+        <div class="overlay error"></div>
+
 
         <div class="info">
             <div class="process-bar">
@@ -41,15 +43,7 @@ VIRTUAL ATTITUDES
         </div>
 
         <div class="level support-level hidden"> <!-- for notifications and alerts -->
-
-            <div class="window support">
-                <div class="w-header">note</div>
-                <div class="w-content">
-                    <p>Every second hostile bots are up to mischief: spamming, discrediting, biasing public opinions and limiting free speech.</p>
-                    <p>Don’t find yourself being left behind, create your own bot army and let your voice be heard again.</p>
-                </div>
-                <a class="close myButton">continue</a>
-            </div>
+            <!--
 
             <div class="window support">
                 <div class="w-header">note</div>
@@ -83,9 +77,11 @@ VIRTUAL ATTITUDES
                 </div>
                 <a class="close myButton">fuck it</a>
             </div>
+            -->
         </div>
 
-        <div class="level login-level hidden"> <!-- for login screen -->
+
+        <div class="level login-level"> <!-- for login screen -->
             <div class="window login">
                 <div class="w-header">social bot creator</div>
                 <div class="w-content">
@@ -133,12 +129,7 @@ VIRTUAL ATTITUDES
                 <div class="flex-column console-unit">
                     <div class="terminal">
                         <div class="t-header"><h2>[<span>alert</span>] <!--[bot overwrite]--></h2></div>
-                        <div class="t-content">
-                            <p>bot limit almost reached</p>
-                            <p>network alert:</p>
-                            <p>bot population exceeds human population on current network</p>
-                            <p>bot-autopopulate initiated</p>
-                        </div>
+                        <div class="t-content"></div>
                     </div>
                     <div class="c-header">Creator</div>
                     <div class="c-content console">
@@ -251,7 +242,7 @@ VIRTUAL ATTITUDES
                     </div>
                     <div class="c-content">
                         <ul class="inventory-list">
-                            <li class="placeholder inactive"><em>Click on bot to<br>start posting activity</em></li>
+                            <li class="placeholder inactive"><em>Click on bot to<br>start posting activity</em>&#x25a1;</li>
                             <!--
                             <li class="placeholder inactive"><em>There<br>are<br>no<br>bots<br>in<br>your<br>inventory<br>yet</em></li>
                             -->
@@ -269,8 +260,8 @@ VIRTUAL ATTITUDES
 
         <!-- Secret Audio Area -->
 
-        <audio id="mySoundClip" loop controls>
-            <source src="https://freesound.org/data/previews/14/14259_18811-lq.mp3"></source>
+        <audio id="myAudioPlayer" loop controls>
+            <source id="myAudioSource" src="https://freesound.org/data/previews/14/14259_18811-lq.mp3"></source>
             Your browser isn't invited for super fun audio time.
         </audio>
 
@@ -290,6 +281,7 @@ VIRTUAL ATTITUDES
         <script src="js/features.js"></script>
         <script src="js/error.js"></script>
         <script src="js/sound.js"></script>
+        <script src="js/support.js"></script>
         <!--<script src="js/scroller.js"></script>-->
     </body>
 </html>

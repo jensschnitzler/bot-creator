@@ -3,6 +3,49 @@
 
 /*--- Functions ---*/
 
+  function createElement( myClass ) {
+    /* set up and append a new window of a certain class/type */
+    console.log( "create new element" );
+
+    newWin = $( "<div/>" ) // creates a div element
+                    .addClass( "window" )   // add window class
+                    .addClass( myClass );   // add custom class
+    newWinHeader = $( "<div/>" )
+                    .addClass( "w-header" )
+                    .append( "<h2></h2><a class='close'>&#xd7;</a>" ); // append content
+    newWinContent = $( "<div/>" )
+                    .addClass( "w-content" );
+
+    // append new window elements
+    newWin.append(newWinHeader).append(newWinContent);
+    newWin.draggable({ stack: newWin });
+
+    if( myClass === 'message' ) {
+      setMessagePosition( newWin );
+
+    } else if( myClass === 'profile' ) {
+      newWin.appendTo( $(".stage") );
+      setRandomPosition( newWin );
+      newWin.addClass('hidden');
+      //newWin.addClass( "mini" );   // add window class
+
+    } else if( myClass === 'support' ) {
+      newWinButton = $( '<a/>' )
+                      .addClass( 'close myButton' )
+                      .html( 'continue' )
+                      .appendTo( newWin );
+                      // button with standard caption
+      newWinHeader.html( 'note' ); // standard headline
+      newWin.appendTo( $('.support-level') );
+      $('.support-level').removeClass('hidden').removeClass('removing').show();
+      setRandomPosition( newWin );
+
+    } else {
+      //setRandomPosition( newWin );
+      console.log("could not create new element")
+    }
+  }
+
   function setCenterPosition( element ) {
     var docHeight = myDoc.height();
     var docWidth = myDoc.width();
@@ -28,18 +71,20 @@
   };
 
   function setRandomPosition( element ) {
+
     var docHeight = myDoc.height();
-    var winHeight = myWindow.height();
+    var winHeight = myWindow.height() * .7;
 
     posCounter++;
     var y = myWindow.scrollTop() + Math.floor( (Math.random() * winHeight) );
-    var x = 1 + Math.floor( (Math.random() * 80) );
+    var x = 1 + Math.floor( (Math.random() * 70) );
+
     /* make new class */
     $("<style>")
       .prop("type", "text/css")
       .html("\
       .pos" + posCounter + " {\
-          position: absolute;\
+          position: fixed;\
           top:" + y + "px;\
           left:" + x + "vw;\
       }")

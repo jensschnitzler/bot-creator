@@ -18,6 +18,7 @@
       logOutAnimation( logOutTime );
       setTimeout(function(){
         $('.login-level').removeClass('hidden');
+        location.reload(); // refresh page
       }, logOutTime);
 
     });

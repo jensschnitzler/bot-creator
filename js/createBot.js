@@ -6,6 +6,7 @@
   /* array/object that contains all the bots */
   var myBotsArray = [];
   var botCounter = 0;
+  var postCounter = 0;
   /* This should be done as soon as the website has loaded: Get all possible bot data into cool arrays with "getAjaxBotData()" */
   var myArray = [];
   var myNamesArray = [];
@@ -102,35 +103,6 @@
     //console.log( 'myValue: ' + myValue );
   }
 
-  function createElement( myClass ) {
-    /* set up and append a new window of a certain class/type */
-    console.log( "create new element" );
-
-    newWin = $( "<div/>" ) // creates a div element
-                    .addClass( "window" )   // add window class
-                    .addClass( myClass );   // add custom class
-    newWinHeader = $( "<div/>" )
-                    .addClass( "w-header" )
-                    .append( "<h2></h2><a class='close'>&#xd7;</a>" ); // append content
-    newWinContent = $( "<div/>" )
-                    .addClass( "w-content" );
-
-    // append new window to stage
-    var stage = $(".stage");
-    newWin.append(newWinHeader).append(newWinContent).appendTo(stage);
-    newWin.draggable({ stack: newWin });
-
-    if( myClass === 'message' ) {
-      setMessagePosition( newWin );
-    } else if( myClass === 'profile' ) {
-      setRandomPosition( newWin );
-      //newWin.addClass( "mini" );   // add window class
-    } else {
-      //setRandomPosition( newWin );
-      console.log("could not create new element")
-    }
-  }
-
   /* images array (just the number of bot profile images) */
   var imageCount = 19;
 
@@ -189,6 +161,7 @@
     // MORE
     //console.log( myBotsArray );
     botCounter++; // increase bot counter by 1
+    botCounterEvents();
   };
 
   function createBotWindow( botID ) {
@@ -304,10 +277,6 @@
         myListElement.addClass( 'reverse' );
       }
 
-      if ( botCounter >= 10 ) {
-        myListElement.addClass( 'error-1' );
-      }
-
       myListElement.append(myProfilePic).append(myBubble).prependTo( feedList );
 
       jumpBall( myInventoryProfilePic, myProfilePic );
@@ -318,6 +287,13 @@
 
     } else {
       alert('newPost failed: No bot data available!');
+    }
+
+    /* error: post leaves feed*/
+    if ( postCounter >= 6 ) {
+      myListElement.appendTo('body');
+      myListElement.addClass( 'error' );
+      setRandomPosition( myListElement );
     }
 
   };
@@ -456,47 +432,28 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
 
       }, 3000); // loadingTime + time to slideUp loading elements
 
+    } else {
+      audioUnclickable();
     }
   });
 
   // CLICK "NEW POST":
-  var postClicks = 0;
+
 
   $( document ).on("click", ".profilePic", function() {
-  //$( ".create-post" ).click( function() { // ".create-post, .inventory-list .profilePic"
     var myButton = $( this );
-
     if (!myButton.hasClass('clicked')) {
       myButton.addClass( 'clicked' );
-      postClicks++; // increase postClicks by 1
-      console.log('create-post clicked - postClicks: ' + postClicks );
-
+      postCounter++; // increase postCounter by 1
+      console.log('create-post clicked - postCounter: ' + postCounter );
       var loadingTime = 3000;
       loadPost( loadingTime );
       setTimeout( function() {
         myButton.removeClass( 'clicked' );
       }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
-
-
-      if( postClicks >= 1 ){
-        myErrorFunction( 'picMessage' );
-
-      } else if( postClicks === 2 ){
-        myErrorFunction( 'flicker' );
-
-      } else if( postClicks === 3 ){
-        myErrorFunction( 'body' );
-
-      } else if( postClicks === 4 ){
-        /*do some stuff*/
-
-      } else if( postClicks === 5 ){
-        myErrorFunction( 'autobot' );
-
-      } else {
-        /*do nothing*/
-      }
-
+      postCounterEvents();
+    } else {
+      audioUnclickable();
     }
   });
 
@@ -523,7 +480,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
           clearInterval( checkTimer ); // break loop
           clearInterval( alertTimer ); // break loop
           $('.feed-post.placeholder').first().animate({opacity: 0});
-          $('.myButton').removeClass('inactive');
+          //$('.myButton').removeClass('inactive');
           $('.c-header').children('.inactive').removeClass('inactive');
         } else {
           console.log( '… no bots found (' + i + ')' );

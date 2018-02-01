@@ -29,7 +29,7 @@
     // get random character, which will be replaced
     var myCharacters = ['a','e','i','o','u'];
     var randomCharacter = myCharacters[Math.floor(Math.random() * myCharacters.length)];
-    var newString = originalString.replace(/a/gi, '!'); // replace 'a'/'A' character with '!'
+    var newString = originalString.replace(/a/gi, '&#x25a1;'); // replace 'a'/'A' character with '!'
     element.html( newString );
     setTimeout(function() {
       element.html( originalString );
