@@ -485,7 +485,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
         } else {
           console.log( '… no bots found (' + i + ')' );
         }
-      }, 1000);
+      }, 3000);
     }
   });
 

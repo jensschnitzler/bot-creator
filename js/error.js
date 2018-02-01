@@ -41,21 +41,20 @@
     }
     if( postCounter === 2 ){
       myErrorFunction( 'flicker' );
-      myErrorFunction( 'picMessage' );
     }
     if( postCounter === 3 ){
       myErrorFunction( 'body' );
     }
     if( postCounter === 4 ){
-      /*do some stuff*/
+      myErrorFunction( 'picMessage' );
     }
-    if( postCounter === 5 ){
+    if( postCounter === 8 ){
       myErrorFunction( 'autoPost' );
     }
-    if( postCounter === 6 ){
+    if( postCounter === 4 ){
       missingGlyphInterval();
     }
-    if ( postCounter >= 5 ) {
+    if ( postCounter >= 10 ) {
       var latestPost = $('.feed-list .feed-post').first();
       latestPost.addClass( 'error' );
       setRandomPosition( latestPost );
@@ -69,33 +68,38 @@
     var myTerminalContent = $('.terminal .t-content');
     var myTerminalHead = $('.terminal .t-header span');
 
-    if( botCounter === 1){
-
+    if( botCounter === 3){
       myTerminal.addClass('error');
       myConsole.addClass('error');
-      myTerminalContent.prepend('<p>bot limit almost reached</p>');
-    }
-    if( botCounter === 2){
-      myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
-    }
-    if( botCounter === 3){
-      myTerminalContent.prepend('<p>bot-autopopulate initiated</p>');
+      myTerminalContent.prepend('<p>initiating terminal</p>');
     }
     if( botCounter === 4){
-      myTerminalContent.prepend('<p>bot-autopopulate initiated</p>');
+      myTerminalContent.prepend('<p>checking bot activity</p>');
     }
     if( botCounter === 5){
-      myTerminalHead.html('alert: overwrite');
+      myTerminalContent.prepend('<p>bot limit almost reached</p>');
+      //myTerminalHead.html('alert: overwrite');
     }
     if( botCounter === 6){
-      support2();
+      myTerminalContent.prepend('<p>bot limit almost reached</p>');
+      //myTerminalHead.html('alert: overwrite');
+    }
+    if( botCounter === 7){
+      myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
       autoBot();
+      crazyTime = true; // trigger crazySlider
+    }
+    if( botCounter === 8){
+      support2();
+    }
+    if( botCounter === 22){
+      myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
     }
 
   }
 
   function picMessage(){
-    console.log( '### picMessage ###' );
+    console.log( '## picMessage ##' );
     //$('.myBubble').first().addClass('debug');
     var url = window.location.href;     // Returns full URL
     $('.myBubble').first().addClass('imgBubble');
@@ -113,6 +117,7 @@
   }
 
   function missingGlyphInterval(){
+    console.log( '## missingGlyphInterval ##' );
     setInterval(function(){
       var myElement = $('p:visible').random();
       //myElement.css('background','red'); // debug
@@ -125,6 +130,11 @@
     $( '.overlay.error' ).fadeTo( 30000 , .7, function() {
       // Animation complete.
     });
+  }
+
+  // The Random Function
+  $.fn.random = function() {
+    return this.eq( Math.floor( Math.random() * this.length ) );
   }
 
 /*--- Events ---*/

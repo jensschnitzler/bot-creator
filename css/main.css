@@ -610,7 +610,7 @@ hr {
 
 /* FEED */
 .feed {
-  padding-top: 0rem;
+  padding-top: 4rem;
 }
 
 .feed .create-post {
@@ -623,7 +623,8 @@ hr {
 }
 
 .feed .load-container {
-  position: sticky;
+  position: absolute;
+  padding: 0 1rem;
   z-index: 200;
   top: 2rem;
   left: 0;
@@ -681,7 +682,7 @@ hr {
 
 .feed-post .myBubble {
   flex: 0 1 auto;
-  max-width: 30rem;
+  max-width: 29rem;
 }
 
 .feed-post .profilePic {
@@ -867,12 +868,12 @@ hr {
 }
 
 .hidden {
-  display: none;
+  /*
+    display: none; // mustnt be enabled! destroys smooth opening slide
+    */
   max-height: 0;
   max-width: 0;
   overflow: hidden;
-  /*
-    */
 }
 
 .clicked, .inactive {

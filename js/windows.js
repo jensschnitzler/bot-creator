@@ -73,11 +73,11 @@
   function setRandomPosition( element ) {
 
     var docHeight = myDoc.height();
-    var winHeight = myWindow.height() * .7;
+    var winHeight = myWindow.height() * .6;
 
     posCounter++;
     var y = myWindow.scrollTop() + Math.floor( (Math.random() * winHeight) );
-    var x = 1 + Math.floor( (Math.random() * 70) );
+    var x = 1 + Math.floor( (Math.random() * 65) );
 
     /* make new class */
     $("<style>")

@@ -83,9 +83,10 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
     displayVals( this );
   })
 
-  setTimeout(function(){
+  var crazyTimeChecker = setInterval(function(){
 
     if( crazyTime === true ){
+      clearInterval( crazyTimeChecker ); // break loop
       $('input.slider').each( function() {
           var mySlider = $( this );
           var min = mySlider.prop('min');
@@ -94,7 +95,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
         });
     }
 
-  }, 2000);
+  }, 3000);
 
 });
 
