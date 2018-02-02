@@ -32,6 +32,9 @@
     } else if( code === 'picMessage' ){
       picMessage();
 
+    } else if( code === 'vidMessage' ){
+      vidMessage();
+
     } else if( code === 'changeBackground' ){
       changeBackground();
 
@@ -58,6 +61,9 @@
       $('.inventory-list .placeholder').first().animate({maxHeight: 0});
       $('.inventory-list .placeholder').first().fadeOut();
     }
+    if( postCounter === 1 ){
+      myErrorFunction( 'picMessage' );
+    }
     if( postCounter === 2 ){
       myErrorFunction( 'flicker' );
     }
@@ -68,9 +74,11 @@
       myErrorFunction( 'picMessage' );
       myErrorFunction( 'glitchRepeat' );
     }
+    if( postCounter === 5 ){
+      myErrorFunction( 'vidMessage' );
+    }
     if( postCounter === 8 ){
       myErrorFunction( 'autoPost' );
-      glitchRepeat();
     }
     if( postCounter === 4 ){
       missingGlyphInterval();
@@ -118,6 +126,9 @@
     if( botCounter === 7){
       myErrorFunction( 'autoBot' );
     }
+    if( botCounter === 15){
+      myErrorFunction( 'changeBackground' );
+    }
     if( botCounter === 22){
       myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
     }
@@ -126,11 +137,28 @@
 
   function picMessage(){
     console.log( '## picMessage ##' );
-    //$('.myBubble').first().addClass('debug');
+
+    var picArray = [ '0.jpg','1.jpg','2.jpg','3.jpg' ];
+    getRandomFrom( picArray );
+    var randomPic = myValue;
+
     var url = window.location.href;     // Returns full URL
     $('.myBubble').first().addClass('imgBubble');
-    $('.myBubble').first().html('<img src="' + url + 'img/messages/0.jpg" class="" alt="error">');
+    $('.myBubble').first().html('<img src="' + url + 'img/messages/' + randomPic + '" class="" alt="error">');
     //$('.myBubble').first().css('background-image', 'url(' + url + 'img/messages/0.jpg)');
+  }
+
+  function vidMessage(){
+    console.log( '## vidMessage ##' );
+
+    var vidArray = [ 'bird.gif','bird.gif' ];
+    getRandomFrom( vidArray );
+    var randomVid = myValue;
+
+    var url = window.location.href;     // Returns full URL
+    $('.myBubble').first().addClass('imgBubble');
+    $('.myBubble').first().html('<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">');
+
   }
 
   function missingGlyph( element ){

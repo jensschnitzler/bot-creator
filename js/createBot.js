@@ -35,13 +35,14 @@
     .always(function(){console.log( "complete" );});
 
     /* get JSON messages */
-    $.getJSON( "js/json/wikipedia.js", function( result ) {
+    $.getJSON( "js/json/trump.js", function( result ) {
       myMessagesArray = result;
       console.log( 'myMessagesArray: ' + result );
     })
     .done(function(){console.log( "done" );})
     .fail(function(){console.log( "error" );})
     .always(function(){console.log( "complete" );});
+
   }
 
   function activityMeasure( element ) {
@@ -104,7 +105,7 @@
   }
 
   /* images array (just the number of bot profile images) */
-  var imageCount = 19;
+  var imageCount = 500;
 
   function newBot() {
 
@@ -118,9 +119,8 @@
     //console.log( 'myName: ' + myName );
 
     /* get (random) image number */
-    //randomKey = Math.floor( Math.random() * imageCount ); // get random
-    //var myImage = 'img/' + randomKey + '.gif';
-    var myImage = 'img/' + botCounter + '.png';
+    randomKey = Math.round( Math.random() * imageCount ); // get random
+    var myImage = 'img/faces/' + randomKey + '.png'; // botCounter
     //console.log( 'myImage: ' + myImage );
 
     // CREATE BOT OBJECT AND PUSH TO "myBotsArray"
@@ -269,7 +269,8 @@
                             .html('');
       var myBubble = $( '<div/>' )
                             .addClass( 'myBubble' )
-                            .html( '<p>' + myBotMessage + '</p>' );
+                            .html( '<p>' + myBotMessage + '</p>' )
+                            .append('<div class="stats"><span class="comments">0</span><span class="likes">0</span></div>');
 
       if ( !  $( '.feed-post' ).first().hasClass( 'reverse' ) ) {
         myListElement.addClass( 'reverse' );
@@ -428,12 +429,10 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
       console.log('create-bot clicked - botClicks: ' + botClicks );
 
       var loadingTime = 2000;
-
       loadBot( loadingTime );
       setTimeout( function() {
         myButton.removeClass( 'clicked' );
-
-      }, 3000); // loadingTime + time to slideUp loading elements
+      }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
 
     } else {
       audioUnclickable();

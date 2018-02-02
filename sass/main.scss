@@ -67,7 +67,7 @@
   $color-InterfaceActive: rgb(235,235,240);
   $color-ElementFill:     rgb(255,255,255);
   $color-ElementFillDark: rgb(150,150,163);
-  $color-ElementBorder:   rgb(130,130,150);
+  $color-ElementBorder:   rgb(130,130,150); // grey text, labels
   $color-ProfileFill:     rgb(102,137,255); //dark blue
   $color-HR:              rgb(190,190,200);
   $color-Alert:           rgb(210,20,30);
@@ -329,18 +329,51 @@
         color: $color-ProfileFill;
       }
     }
+
+    .stats {
+      border-top: 1px solid $color-HR;
+      //padding-top: .5rem;
+      position: relative;
+      display: block;
+      min-height: 1.5rem;
+      min-width: 16rem;
+
+      span{
+        color: $color-ElementBorder;
+        position: absolute;
+        top: .5rem;
+        left: 0;
+
+        &.likes {
+          left: 60%;
+        }
+      }
+
+      .likes::before {
+        content: 'likes';
+        padding-right: .5rem;
+      }
+      .comments::before {
+        content: 'comments';
+        padding-right: .5rem;
+      }
+
+    }
+
+  }
+  .imgBubble {
+    //margin:0;
+    //padding:0;
+    border: 0;
+
     img {
       max-width: 100%;
       max-height: 100%;
       border-radius: .9rem;
       margin: -.5rem;
-      //border:1px solid $color-ElementBorder;
+      border:1px solid $color-ElementBorder;
+      box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.05);
     }
-
-  }
-  .imgBubble {
-    margin:0;
-    padding:0;
   }
   .profilePic {
     box-shadow:inset 0px .4rem .8rem 0px rgba(255,255,255,.2), inset 0 -.3rem .8rem rgba(0,0,0,.1);
@@ -349,10 +382,10 @@
     border-radius: 50%;
     margin: .5rem;
 
-    background-blend-mode: multiply;
+    //background-blend-mode: multiply;
     background: $color-ProfileFill center center;
     background-repeat: no-repeat, no-repeat;
-    background-size: 100%, contain;
+    background-size: cover; // 100%, contain;
     background-image: url("https://pixel.nymag.com/imgs/daily/science/2016/05/03/super-recognizer/q7-3.png");
   }
   .inventory-list .profilePic {

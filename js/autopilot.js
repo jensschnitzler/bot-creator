@@ -20,6 +20,8 @@ $( function() {
       $('.support-level').addClass('hidden');
       $('.login-level').addClass('hidden');
 
+      loadBot( 2000 );
+
       //myErrorFunction( 'autoBot' );
       //myErrorFunction( 'autoPost' );
     }, 30000);
