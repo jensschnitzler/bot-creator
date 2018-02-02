@@ -8,3 +8,4 @@
   * https://www.youtube.com/watch?v=biZgx45Mzqo
 * give posts stats for likes, comments, …
 * function that takes to different windows and exchanges a couple of words to create new context.
+* randomize how large / how cropped videos and pictures are displayed in messages
