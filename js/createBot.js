@@ -5,8 +5,8 @@
   var myStage = $('.stage');
   /* array/object that contains all the bots */
   var myBotsArray = [];
-  var botCounter = 0;
-  var postCounter = 0;
+  var botCounter = -1;
+  var postCounter = -1;
   /* This should be done as soon as the website has loaded: Get all possible bot data into cool arrays with "getAjaxBotData()" */
   var myArray = [];
   var myNamesArray = [];
@@ -160,8 +160,6 @@
 
     // MORE
     //console.log( myBotsArray );
-    botCounter++; // increase bot counter by 1
-    botCounterEvents();
   };
 
   function createBotWindow( botID ) {
@@ -291,7 +289,7 @@
 
     /* error: post leaves feed*/
     if ( postCounter >= 6 ) {
-      myListElement.appendTo('body');
+      myListElement.appendTo('main-level');
       myListElement.addClass( 'error' );
       setRandomPosition( myListElement );
     }
@@ -357,6 +355,7 @@
       myLoadStatus.html( i );
 
       if( i === 100 ) {
+        audioButton(); // make a sound
         console.log( myElement + ': ' + i);
         myLoadStatus.html( 'complete' );
         myFunction();
@@ -370,13 +369,17 @@
   }
 
   function loadBot( myTime ) {
+    botCounter++; // increase botCounter by 1
     loadProcess( myTime, '.loadBot', newBot );
     $('.inventory-unit').removeClass('hidden');
+    botCounterEvents();
   };
 
   function loadPost( myTime ) {
+    postCounter++; // increase postCounter by 1
     loadProcess( myTime, '.loadPost', newPost );
     $('.feed-unit').removeClass('hidden');
+    postCounterEvents();
   };
 
   function chatBots(){
@@ -444,14 +447,13 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
     var myButton = $( this );
     if (!myButton.hasClass('clicked')) {
       myButton.addClass( 'clicked' );
-      postCounter++; // increase postCounter by 1
+
       console.log('create-post clicked - postCounter: ' + postCounter );
       var loadingTime = 3000;
       loadPost( loadingTime );
       setTimeout( function() {
         myButton.removeClass( 'clicked' );
       }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
-      postCounterEvents();
     } else {
       audioUnclickable();
     }

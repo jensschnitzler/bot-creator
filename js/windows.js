@@ -6,6 +6,7 @@
   function createElement( myClass ) {
     /* set up and append a new window of a certain class/type */
     console.log( "create new element" );
+    audioButton(); // make a sound
 
     newWin = $( "<div/>" ) // creates a div element
                     .addClass( "window" )   // add window class
@@ -38,7 +39,7 @@
       newWinHeader.html( 'note' ); // standard headline
       newWin.appendTo( $('.support-level') );
       $('.support-level').removeClass('hidden').removeClass('removing').show();
-      setRandomPosition( newWin );
+      setCenterPosition( newWin );
 
     } else {
       //setRandomPosition( newWin );
@@ -72,24 +73,67 @@
 
   function setRandomPosition( element ) {
 
-    var docHeight = myDoc.height();
-    var winHeight = myWindow.height() * .6;
+    /* 1) get random position values*/
+
+    var winHeight = myWindow.height(); // * .6
+    console.log('winHeight: ' + winHeight);
+    var winWidth = myWindow.width();
+    console.log('winWidth: ' + winWidth);
+    var eTop = Math.floor( (Math.random() * winHeight) ); // random pixel value
+    console.log('eTop: ' + eTop);
+    var eLeft = Math.floor( (Math.random() * winWidth) );
+    console.log('eLeft: ' + eLeft);
+
+    /* 2) make new class */
 
     posCounter++;
-    var y = myWindow.scrollTop() + Math.floor( (Math.random() * winHeight) );
-    var x = 1 + Math.floor( (Math.random() * 65) );
-
-    /* make new class */
     $("<style>")
       .prop("type", "text/css")
       .html("\
       .pos" + posCounter + " {\
           position: fixed;\
-          top:" + y + "px;\
-          left:" + x + "vw;\
+          top:" + eTop + "px;\
+          left:" + eLeft + "px;\
       }")
       .appendTo( "head" );
     element.addClass("pos" + posCounter ).removeAttr('style');
+
+    /* 3) get actual element offset */
+
+    var eHeight = element.height();
+    console.log('eHeight: ' + eHeight);
+    var eWidth = element.width();
+    console.log('eWidth: ' + eWidth);
+    //var eTop = element.offset().top; //get the offset top of the element
+    //console.log('eTop: ' + eTop);
+    //var eLeft = element.offset().left; //get the offset left of the element
+    //console.log('eLeft: ' + eLeft);
+    var eBottom = eHeight + eTop;
+    console.log('eBottom: ' + eBottom);
+    var eRight = eWidth + eLeft;
+    console.log('eRight: ' + eRight);
+
+    var diffRight = eRight - winWidth;
+    console.log('diffRight: ' + diffRight);
+    var diffBottom = eBottom - winHeight;
+    console.log('diffBottom: ' + diffBottom);
+
+    /* 4) correct offset difference */
+
+    if( diffRight > 0 ){
+      //element.addClass('debug');
+      element.css({
+          'left':'-=' + diffRight + 'px'
+      });
+    }
+
+    if( diffBottom > 0 ){
+      //element.addClass('debug');
+      element.css({
+          'top': '-=' + diffBottom + 'px',
+      });
+    }
+
   };
 
 /*--- Events ---*/
@@ -115,6 +159,7 @@ $( document ).ready(function() {
   // LOGIN WINDOW:
   $( ".window.login" ).each(function( index ) { // position login window centered
     setCenterPosition( $(this) );
+    //setRandomPosition( $(this) );
     $(this).draggable({ stack: ".window" });
   });
 

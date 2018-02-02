@@ -59,6 +59,10 @@ $( function() {
     audioButton();
   });
 
+  $( document ).on("click", ".profilePic", function() {
+    audioButton();
+  });
+
   /*
   $( document ).on("click", ".clicked", function() {
     myAudioPlayer.prop('loop', false);

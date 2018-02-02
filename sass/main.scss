@@ -658,7 +658,7 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: .5rem;
+    padding: .5rem 0;
     &.reverse {
       flex-direction: row-reverse;
     }
@@ -713,8 +713,11 @@
 /* WINDOW */
   .window {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
+    transition: left 0s, top 0s;
+    max-width: 46vw;
+    //margin-left: -23vw;
+    top: 45vh;
+    left: 25vw;
     z-index: 200;
     padding:  0 .8rem .8rem .8rem;
     border-radius: 1rem;
@@ -778,7 +781,7 @@
     margin: .1rem 0;
     width: auto;
     min-width: 34vw;
-    max-width: 44vw;
+    //max-width: 44vw;
   }
   .w-content p + p {
     margin-top: .8rem;
@@ -838,10 +841,10 @@
   }
 /* DEBUG */
   .debug {
-    background: red;
+    background: rgba(255,0,0,.98);
   }
   .debug2 {
-    background: green;
+    background: rgba(0,255,0,.98);;
   }
 
 /* LOADING */
@@ -929,7 +932,7 @@
 
 /* --- Errors --- */
 
-.feed-post.error-1 {
+.feed-post.error {
   //position: fixed;
   //top: 10vw;
   //left: 10vh;

@@ -17,7 +17,7 @@
 
   function flickerInterval(){
     setInterval(function(){
-      var flickerElement = $('.window:visible').random();
+      var flickerElement = $('div:visible').random();
       flicker( flickerElement );
       randomTime = Math.floor((Math.random() * 1000) + 1);
     }, 4000 + randomTime );

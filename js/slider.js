@@ -30,7 +30,7 @@
 /*--- Functions ---*/
 
   function crazySlider( input, min, max ){
-    console.log('### CRAZY SLIDER ###');
+    console.log('## crazySlider ##');
     setInterval(function(){
 
       var random = Math.round( (Math.random() * max) + min );
@@ -39,6 +39,19 @@
       displayVals( input );
 
     }, 200 );
+
+  };
+
+  function allCrazySliders(){
+    console.log('## allCrazySliders ##');
+    console.log('# It is  crazy slider time #');
+
+    $('input.slider').each( function() {
+        var mySlider = $( this );
+        var min = mySlider.prop('min');
+        var max = mySlider.prop('max');
+        crazySlider( mySlider, min, max );
+      });
 
   };
 
@@ -74,6 +87,7 @@
 
 /*--- Events ---*/
 $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
+  console.log('### SLIDER.JS ###');
 
   $('input.slider').change( function(){
     displayVals( this );
@@ -85,14 +99,11 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
 
   var crazyTimeChecker = setInterval(function(){
 
-    if( crazyTime === true ){
+    console.log('## crazyTimeChecker ##');
+
+    if( crazyTime == true ){
+      allCrazySliders();
       clearInterval( crazyTimeChecker ); // break loop
-      $('input.slider').each( function() {
-          var mySlider = $( this );
-          var min = mySlider.prop('min');
-          var max = mySlider.prop('max');
-          crazySlider( mySlider, min, max );
-        });
     }
 
   }, 3000);

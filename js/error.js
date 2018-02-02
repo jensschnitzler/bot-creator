@@ -3,6 +3,11 @@
 
 /*--- Global Variables ---*/
 
+  var myTerminal = $('.terminal');
+  var myConsole = $('.console-unit');
+  var myTerminalContent = $('.terminal .t-content');
+  var myTerminalHead = $('.terminal .t-header span');
+
 /*--- Global Functions ---*/
 
   function myErrorFunction( code ){
@@ -30,11 +35,25 @@
     } else if( code === 'changeBackground' ){
       changeBackground();
 
+    } else if( code === 'autoBot' ){
+      myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
+      autoBot();
+      crazyTime = true; // trigger crazySlider
+
+      setTimeout(function(){
+        support2();
+        allCrazySliders();
+       }, 3000);
+
+    } else if( code === 'glitchRepeat' ){
+      setInterval(function(){ glitchRepeat(); }, 10000);
+
     }
+
   }
 
   function postCounterEvents(){
-    if( postCounter === 1 ){
+    if( postCounter === 0 ){
       $('.inventory-list .placeholder').first().animate({opacity: 0});
       $('.inventory-list .placeholder').first().animate({maxHeight: 0});
       $('.inventory-list .placeholder').first().fadeOut();
@@ -43,30 +62,42 @@
       myErrorFunction( 'flicker' );
     }
     if( postCounter === 3 ){
-      myErrorFunction( 'body' );
+      //glitchRepeat();
     }
     if( postCounter === 4 ){
       myErrorFunction( 'picMessage' );
+      myErrorFunction( 'glitchRepeat' );
     }
     if( postCounter === 8 ){
       myErrorFunction( 'autoPost' );
+      glitchRepeat();
     }
     if( postCounter === 4 ){
       missingGlyphInterval();
     }
     if ( postCounter >= 10 ) {
+      /*
       var latestPost = $('.feed-list .feed-post').first();
       latestPost.addClass( 'error' );
       setRandomPosition( latestPost );
-      latestPost.appendTo('body');
+      latestPost.appendTo('main-level');
+      */
+    }
+    if( postCounter === 12 ){
+      myErrorFunction( 'autoBot' );
+    }
+    if( postCounter === 13 ){
+
+    }
+    if( postCounter === 20 ){
+      support3();
+    }
+    if( postCounter === 30 ){
+      support4();
     }
   }
 
   function botCounterEvents(){
-    var myTerminal = $('.terminal');
-    var myConsole = $('.console-unit');
-    var myTerminalContent = $('.terminal .t-content');
-    var myTerminalHead = $('.terminal .t-header span');
 
     if( botCounter === 3){
       myTerminal.addClass('error');
@@ -85,12 +116,7 @@
       //myTerminalHead.html('alert: overwrite');
     }
     if( botCounter === 7){
-      myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
-      autoBot();
-      crazyTime = true; // trigger crazySlider
-    }
-    if( botCounter === 8){
-      support2();
+      myErrorFunction( 'autoBot' );
     }
     if( botCounter === 22){
       myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
