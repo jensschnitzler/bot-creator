@@ -15,7 +15,9 @@
 
     // works on elements even when they're added after you bound the event handler
     var myInventoryList = $( '.inventory-list' );
-    myInventoryList.on( "mouseenter", ".profilePic", function(){ $(this).addClass('shake') } );
+    myInventoryList.on( "mouseenter", ".profilePic", function(){
+        $( this ).not( '.clicked' ).addClass('shake');
+      });
     myInventoryList.on( "mouseleave", ".profilePic", function(){ $(this).removeClass('shake') } );
 
   });

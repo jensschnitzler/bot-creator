@@ -39,20 +39,30 @@
       changeBackground();
 
     } else if( code === 'autoBot' ){
-      myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
       autoBot();
-      crazyTime = true; // trigger crazySlider
-
-      setTimeout(function(){
-        support2();
-        allCrazySliders();
-       }, 3000);
 
     } else if( code === 'glitchRepeat' ){
       setInterval(function(){ glitchRepeat(); }, 10000);
 
     }
 
+  }
+
+  function autoBot( loadCycleTime ){
+      //var loadCycleTime = 5000;
+
+      myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
+      crazyTime = true; // trigger crazySlider
+
+      var timerID = setInterval(function () {
+        loadBot( loadCycleTime );
+      }, loadCycleTime);
+
+      allCrazySliders( loadCycleTime );
+
+      setTimeout(function(){
+        support2();
+      }, 3000);
   }
 
   function postCounterEvents(){

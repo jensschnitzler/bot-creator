@@ -249,18 +249,23 @@
       var messageKey = Math.random() * 4; // get random key: 0–4
       console.log( 'random message key:' + messageKey );
       if( messageKey <= 1 ){
-        var picArray = [ '0.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg' ];
+        var picArray = [ '0.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg' ];
         getRandomFrom( picArray ); // returns myValue
         var randomPic = myValue;
         //$('.myBubble').first().addClass('imgBubble');
         var myBotMessage = '<img src="' + url + 'img/messages/' + randomPic + '" class="" alt="error">';
 
       } else if( messageKey <= 2 ) {
-        var vidArray = [ 'trump-2.gif','bird.gif' ];
+        //var vidArray = [ 'trump-2.gif','bird.gif' ];
+        var vidArray = [ 'trump.mp4' ];
         getRandomFrom( vidArray ); // returns myValue
         var randomVid = myValue;
         //$('.myBubble').first().addClass('imgBubble');
-        var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
+        //var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
+
+
+        var myBotMessage = '<video autoplay loop><source src="' + url + 'vid/' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
+
 
       } else {
         getRandomFrom( myBot.messages ); // returns "myValue"
@@ -355,12 +360,6 @@
     }, 1000);
   }
 
-  function autoBot(){
-    var timerID = setInterval(function () {
-      loadBot( 5000 );
-    }, 5000);
-  };
-
   function loadProcess( myTime, myElement, myFunction ) {
     var i = 0;
     console.log( myElement + ': ' + i);
@@ -445,18 +444,32 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
   var botClicks = 0;
 
   $( ".create-bot" ).click( function() {
+    var botLimit = 7;
+    var loadingTime = 3000;
     var myButton = $( this );
 
-    if (!myButton.hasClass('clicked')) {
+    if (!myButton.hasClass( 'clicked' )){
+
       myButton.addClass( 'clicked' );
       botClicks++; // increase botClicks by 1
-      console.log('create-bot clicked - botClicks: ' + botClicks );
+      //console.log('create-bot clicked - botClicks: ' + botClicks );
 
-      var loadingTime = 2000;
-      loadBot( loadingTime );
-      setTimeout( function() {
-        myButton.removeClass( 'clicked' );
-      }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
+      if( botClicks > botLimit ){
+
+        autoBot( loadingTime );
+
+      } else {
+
+        loadBot( loadingTime );
+
+        setTimeout( function() {
+          myButton.removeClass( 'clicked' );
+          if( botClicks == botLimit ){
+            myButton.html('auto-create bots');
+          }
+        }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
+
+      }
 
     } else {
       audioUnclickable();
@@ -468,6 +481,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
     var myButton = $( this );
     if (!myButton.hasClass('clicked')) {
       myButton.addClass( 'clicked' );
+      myButton.removeClass( 'shake' ); // from 'jiggle.js'
       $('.profilePic').addClass( 'clicked' ); // disable all profilePics
 
       console.log('create-post clicked - postCounter: ' + postCounter );

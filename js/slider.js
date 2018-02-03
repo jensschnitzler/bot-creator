@@ -29,7 +29,7 @@
 
 /*--- Functions ---*/
 
-  function crazySlider( input, min, max ){
+  function crazySlider( input, min, max, time ){
     console.log('## crazySlider ##');
     setInterval(function(){
 
@@ -38,11 +38,11 @@
       input.val( random );
       displayVals( input );
 
-    }, 200 );
+    }, time );
 
   };
 
-  function allCrazySliders(){
+  function allCrazySliders( time ){
     console.log('## allCrazySliders ##');
     console.log('# It is  crazy slider time #');
 
@@ -50,7 +50,7 @@
         var mySlider = $( this );
         var min = mySlider.prop('min');
         var max = mySlider.prop('max');
-        crazySlider( mySlider, min, max );
+        crazySlider( mySlider, min, max, time );
       });
 
   };

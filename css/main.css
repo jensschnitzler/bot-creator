@@ -296,11 +296,16 @@ hr {
   padding: .5rem .4rem .4rem .6rem;
 }
 
-.myBubble img {
+.myBubble img, .myBubble video {
   max-width: 100%;
-  max-height: 100%;
+  height: 100%;
+  max-height: 35vh;
   border-radius: .9rem;
   box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.05);
+}
+
+.myBubble video {
+  height: auto;
 }
 
 .myBubble p {
@@ -492,8 +497,8 @@ hr {
 }
 
 .user-img.profilePic {
-  width: 3rem;
-  height: 3rem;
+  width: 2.6rem;
+  height: 2.6rem;
 }
 
 .user-details {
