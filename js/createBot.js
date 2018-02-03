@@ -1,5 +1,6 @@
 // GENERAL VARIABLES
 
+  var url = window.location.href;     // Returns full URL
   var myDoc = $(document);
   var myWindow = $(window);
   var myStage = $('.stage');
@@ -105,7 +106,7 @@
   }
 
   /* images array (just the number of bot profile images) */
-  var imageCount = 500;
+  var imageCount = 492;
 
   function newBot() {
 
@@ -242,8 +243,29 @@
       getRandomFrom( myBotsArray ); // returns "myValue"
       var myBot = myValue;
       var myBotID = myValue.id;
-      getRandomFrom( myBot.messages ); // returns "myValue"
-      var myBotMessage = myValue;
+
+
+      /* text, picture or video message? */
+      var messageKey = Math.random() * 4; // get random key: 0–4
+      console.log( 'random message key:' + messageKey );
+      if( messageKey <= 1 ){
+        var picArray = [ '0.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg' ];
+        getRandomFrom( picArray ); // returns myValue
+        var randomPic = myValue;
+        //$('.myBubble').first().addClass('imgBubble');
+        var myBotMessage = '<img src="' + url + 'img/messages/' + randomPic + '" class="" alt="error">';
+
+      } else if( messageKey <= 2 ) {
+        var vidArray = [ 'trump-2.gif','bird.gif' ];
+        getRandomFrom( vidArray ); // returns myValue
+        var randomVid = myValue;
+        //$('.myBubble').first().addClass('imgBubble');
+        var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
+
+      } else {
+        getRandomFrom( myBot.messages ); // returns "myValue"
+        var myBotMessage = '<p>' + myValue + '</p>';
+      }
 
       // get corresponding profilePic in Inventory:
       var myInventoryProfilePic = $( '.inventory-list .profilePic' + myBotID ).first().addClass( 'active' );
@@ -269,7 +291,7 @@
                             .html('');
       var myBubble = $( '<div/>' )
                             .addClass( 'myBubble' )
-                            .html( '<p>' + myBotMessage + '</p>' )
+                            .html( myBotMessage )
                             .append('<div class="stats"><span class="comments">0</span><span class="likes">0</span></div>');
 
       if ( !  $( '.feed-post' ).first().hasClass( 'reverse' ) ) {
@@ -289,11 +311,13 @@
     }
 
     /* error: post leaves feed*/
+    /*
     if ( postCounter >= 6 ) {
       myListElement.appendTo('main-level');
       myListElement.addClass( 'error' );
       setRandomPosition( myListElement );
     }
+    */
 
   };
 
@@ -379,8 +403,8 @@
   function loadPost( myTime ) {
     postCounter++; // increase postCounter by 1
     loadProcess( myTime, '.loadPost', newPost );
-    $('.feed-unit').removeClass('hidden');
-    postCounterEvents();
+    $('.feed-unit').removeClass('hidden');  // show the feed, where the post goes
+    postCounterEvents(); // triggers post-related events
   };
 
   function chatBots(){
@@ -440,18 +464,18 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
   });
 
   // CLICK "NEW POST":
-
-
   $( document ).on("click", ".profilePic", function() {
     var myButton = $( this );
     if (!myButton.hasClass('clicked')) {
       myButton.addClass( 'clicked' );
+      $('.profilePic').addClass( 'clicked' ); // disable all profilePics
 
       console.log('create-post clicked - postCounter: ' + postCounter );
       var loadingTime = 3000;
       loadPost( loadingTime );
       setTimeout( function() {
         myButton.removeClass( 'clicked' );
+        $('.profilePic').removeClass( 'clicked' ); // re-enable all profilePics
       }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
     } else {
       audioUnclickable();

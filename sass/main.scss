@@ -27,7 +27,7 @@
     font-family: 'HelveticaLightExtended', serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.6vw;
+    font-size: 1.4vw;
     line-height: 1.1rem;
     text-transform: uppercase;
     letter-spacing: .040rem;
@@ -319,6 +319,17 @@
   .myBubble {
     margin: 0 .5rem;
     padding: .5rem .4rem .4rem .6rem;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: .9rem;
+      //margin: -.5rem;
+      //margin: -.05rem 0 -.4rem 0
+      //border:1px solid $color-ElementBorder;
+      box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.05);
+    }
+
     p {
       @include font-style-long;
       text-align: left;
@@ -365,18 +376,9 @@
     //margin:0;
     //padding:0;
     border: 0;
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: .9rem;
-      margin: -.5rem;
-      border:1px solid $color-ElementBorder;
-      box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.05);
-    }
   }
   .profilePic {
-    box-shadow:inset 0px .4rem .8rem 0px rgba(255,255,255,.2), inset 0 -.3rem .8rem rgba(0,0,0,.1);
+    box-shadow: inset 0px .4rem .8rem 0px rgba(255,255,255,.2), inset 0 -.3rem .8rem rgba(0,0,0,.1);
     height: 4rem;
     width: 4rem;
     border-radius: 50%;
@@ -387,6 +389,7 @@
     background-repeat: no-repeat, no-repeat;
     background-size: cover; // 100%, contain;
     background-image: url("https://pixel.nymag.com/imgs/daily/science/2016/05/03/super-recognizer/q7-3.png");
+    transition: background-size 1s ease 0s;
   }
   .inventory-list .profilePic {
     cursor: pointer;
@@ -449,12 +452,13 @@
     background: $color-Interface;
     position: relative;
     //display: block;
-
   }
   .flex-header {
     width: 100vw;
     max-height: 10vh;
     border-bottom: 1px solid $color-Background;
+    overflow: visible;
+    z-index: 100;
   };
   .flex-column {
     flex: 1 2 auto;
@@ -708,7 +712,7 @@
   }
   .feed-post:nth-child(1) {
     .myBubble, .profilePic {
-      border: 1px solid $color-ProfileFill;
+      border-color: $color-ProfileFill;
     }
   }
 
@@ -971,12 +975,30 @@
   //left: 10vh;
   z-index: 1000;
 
-  div {
+  &>div {
     -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.3);
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.3);
   }
 }
+
+.glitchStripe {
+  pointer-events: none;
+  background-color: rgba(0,0,255,.025);
+  box-shadow: 0px 0px 10vh 5vh rgba(0,0,255,.05);
+  display: block;
+  width: 100vw;
+  height: 5vh;
+  position: fixed;
+  top: 0vh;
+  left: 0;
+  z-index: 1000;
+  animation: glitchStripeAnimation 9s linear infinite;
+}
+  @keyframes glitchStripeAnimation {
+    0% { top: -10vh; } // -height
+    100% { top: 100vh; }
+  }
 
 /* --- Audio --- */
 

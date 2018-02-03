@@ -2,31 +2,49 @@
 // autopilot.js manages what happens if no user activity is detected.
 
 /*--- Global Variables ---*/
+  var autopilotTimer = null;
 
 /*--- Global Functions ---*/
 
-  // The Random Function
-  $.fn.random = function() {
-    return this.eq( Math.floor( Math.random() * this.length ) );
+  function startAutopilot() {
+    // (re-)start autopilot
+
+    //if (autopilotTimer != null) { // reset timer
+      window.clearTimeout( autopilotTimer );
+      autopilotTimer = null;
+    //}
+
+    //else { // start timer
+      autopilotTimer = window.setTimeout(function(){
+        $('.hidden').removeClass('hidden');
+        $('.support-level').addClass('hidden');
+        $('.login-level').addClass('hidden');
+
+        loadBot( 2000 );
+
+        //myErrorFunction( 'autoBot' );
+        //myErrorFunction( 'autoPost' );
+      }, 40000);
+    //}
   }
 
 /*--- Events ---*/
 $( function() {
   console.log( '### AUTOPILOT.JS ###' );
 
-  setTimeout(function(){
-      $('.hidden').removeClass('hidden');
+  startAutopilot()
 
-      $('.support-level').addClass('hidden');
-      $('.login-level').addClass('hidden');
-
-      loadBot( 2000 );
-
-      //myErrorFunction( 'autoBot' );
-      //myErrorFunction( 'autoPost' );
-    }, 30000);
+  /* on any event restart timer */
+  $('*').on('click hover keydown keypress keyup mouseenter mouseleave mousemove mouseout mouseover mouseup scroll', function(){
+    startAutopilot();
+  });
 
 });
+
+
+
+
+
 
 
 

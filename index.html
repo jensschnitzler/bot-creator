@@ -13,6 +13,9 @@ VIRTUAL ATTITUDES
         <!-- Short description of the document (limit to 150 characters) -->
         <meta name="description" content="Create a bot">
 
+        <!-- iPhone HTML app full screen mode - remove the URL and button bars -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
         <!-- Helps prevent duplicate content issues -->
         <link rel="canonical" href="https://jensschnitzler.github.io/bot-creator/">
         <!-- Social media -->
@@ -29,7 +32,10 @@ VIRTUAL ATTITUDES
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body class="<!--rotate-->" contenteditable="true"> <!-- can contain classes like "error" to determine the overall phase -->
+    <body class="<!--rotate-->"> <!-- can contain classes like "error" to determine the overall phase -->
+
+        <!-- contenteditable="true" -->
+
         <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -49,9 +55,9 @@ VIRTUAL ATTITUDES
 
         <div class="level login-level"> <!-- for login screen -->
             <div class="window login">
-                <div class="w-header" contenteditable="true">social bot creator</div>
+                <div class="w-header">social bot creator</div>
                 <div class="w-content">
-                    <p contenteditable="true">Feel free to log in, create your <br>own bots and rule the world <br>of social media.</p>
+                    <p>Feel free to log in, create your <br>own bots and rule the world <br>of social media.</p>
                     <ul>
                         <li class="login-input">
                             <input  name="email" type="email" placeholder="Email" value="admin@botcreator.com">
@@ -252,6 +258,7 @@ VIRTUAL ATTITUDES
         <script src="js/autopilot.js"></script>
         <script src="js/suicide.js"></script>
         <script src="js/liker.js"></script>
+        <!--<script src="js/fullscreen.js"></script>-->
         <!--<script src="js/scroller.js"></script>-->
     </body>
 </html>

@@ -56,6 +56,9 @@
   }
 
   function postCounterEvents(){
+
+    /*
+
     if( postCounter === 0 ){
       $('.inventory-list .placeholder').first().animate({opacity: 0});
       $('.inventory-list .placeholder').first().animate({maxHeight: 0});
@@ -84,12 +87,12 @@
       missingGlyphInterval();
     }
     if ( postCounter >= 10 ) {
-      /*
-      var latestPost = $('.feed-list .feed-post').first();
-      latestPost.addClass( 'error' );
-      setRandomPosition( latestPost );
-      latestPost.appendTo('main-level');
-      */
+
+      //var latestPost = $('.feed-list .feed-post').first();
+      //latestPost.addClass( 'error' );
+      //setRandomPosition( latestPost );
+      //latestPost.appendTo('main-level');
+
     }
     if( postCounter === 12 ){
       myErrorFunction( 'autoBot' );
@@ -103,9 +106,12 @@
     if( postCounter === 30 ){
       support4();
     }
+    */
   }
 
   function botCounterEvents(){
+
+    /*
 
     if( botCounter === 3){
       myTerminal.addClass('error');
@@ -129,9 +135,17 @@
     if( botCounter === 15){
       myErrorFunction( 'changeBackground' );
     }
+    if( botCounter >= 17){
+      distortFace();
+    }
+    if( botCounter >= 19){
+      glitchStripes();
+    }
     if( botCounter === 22){
       myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
     }
+
+    */
 
   }
 
@@ -181,9 +195,40 @@
   }
 
   function changeBackground(){
-    $( '.overlay.error' ).fadeTo( 30000 , .7, function() {
+    $( 'body' ).animate({body: '#000'});
+    $( '.overlay.error' ).fadeTo( 30000 , .4, function() {
       // Animation complete.
     });
+  }
+
+  function distortFace(){
+    console.log( '## distortFace ##' );
+    var myFace = $( '.profilePic:visible' ).random();
+    myFace.css( 'background-size','1000% 100%' ); // animate with css transition!
+
+    /* // following doesnt work
+    myFace.css( 'background-size','100% auto' );
+    setTimeout(function(){
+        myFace.animate({ backgroundSize: '800% auto' }, 3000);
+     }, 3000);
+    */
+  }
+
+  function glitchStripes(){
+    console.log( '## glitchStripes ##' );
+
+    var randomTime = Math.floor((Math.random() * 2000) + 1500);
+
+    for (i = 0; i < 6; i++) {
+
+      var randomTime = Math.floor((Math.random() * 6000) + 2000);
+
+      setTimeout(function(){
+        var myStripe = $( "<div/>" ) // creates a div element
+                .addClass( "glitchStripe" );   // add window class
+        myStripe.appendTo( $('body') );
+       }, randomTime);
+    }
   }
 
   // The Random Function
