@@ -25,7 +25,7 @@
       setMessagePosition( newWin );
 
     } else if( myClass === 'profile' ) {
-      newWin.appendTo( $(".stage") );
+      newWin.appendTo( $(".profile-level") );
       setRandomPosition( newWin );
       newWin.addClass('hidden');
       //newWin.addClass( "mini" );   // add window class
@@ -39,6 +39,7 @@
       newWinHeader.html( 'note' ); // standard headline
       newWin.appendTo( $('.support-level') );
       $('.support-level').removeClass('hidden').removeClass('removing').show();
+      $('.main-level').addClass('blur');
       setCenterPosition( newWin );
 
     } else {
@@ -166,6 +167,8 @@ $( document ).ready(function() {
   $( document ).on("click", ".window", function() { // works on class ".close" even if it's added after you bound the event handler
     var myLevel = $(this).parents(".level");
     var myWindow = $(this);
+
+    $('.main-level').removeClass('blur')
 
     if( myLevel.is('.login-level') ) {
       console.log('… removing login level …');

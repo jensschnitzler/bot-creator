@@ -3,7 +3,7 @@
   var url = window.location.href;     // Returns full URL
   var myDoc = $(document);
   var myWindow = $(window);
-  var myStage = $('.stage');
+  var myStage = $('.profile-level');
   /* array/object that contains all the bots */
   var myBotsArray = [];
   var botCounter = -1;

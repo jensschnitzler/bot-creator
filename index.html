@@ -32,7 +32,7 @@ VIRTUAL ATTITUDES
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body class="<!--rotate-->"> <!-- can contain classes like "error" to determine the overall phase -->
+    <body class=""> <!-- can contain classes like "error", "rotate" to determine the overall phase -->
 
         <!-- contenteditable="true" -->
 
@@ -48,16 +48,15 @@ VIRTUAL ATTITUDES
             </div>
         </div>
 
-        <div class="level support-level hidden"> <!-- for notifications and alerts -->
+        <div class="level support-level hidden"> <!-- for notifications and alerts --> </div>
 
-        </div>
-
+        <div class="level profile-level hidden"> <!-- for notifications and alerts --> </div>
 
         <div class="level login-level"> <!-- for login screen -->
             <div class="window login">
                 <div class="w-header">social bot creator</div>
                 <div class="w-content">
-                    <p>Feel free to log in, create your <br>own bots and rule the world <br>of social media.</p>
+                    <p>Log in, create your own bots and rule the world of social media.</p>
                     <ul>
                         <li class="login-input">
                             <input  name="email" type="email" placeholder="Email" value="admin@botcreator.com">
@@ -71,15 +70,21 @@ VIRTUAL ATTITUDES
             </div>
         </div>
 
-        <div class="level main-level"> <!-- for main content -->
+        <div class="level main-level blur"> <!-- for main content -->
             <div class="flex-container">
 
                 <div class="flex-header">
                     <div class="c-header">social bot creator</div>
                     <div class="c-content">
                         <div class="user-info-container">
-                            <div class="user-img profilePic audio">
-                                <img src="">
+                            <div class="user-img profilePic audio vid">
+                                <!-- https://codepen.io/JensSchnitzler/pen/MOarbK -->
+                                <video id="video" autoplay></video>
+                                <!--
+                                <button id="snap">Snap Photo</button>
+                                <canvas id="canvas"></canvas>
+                                -->
+
                             </div>
                             <div class="user-details">
                                 <ul>
@@ -258,6 +263,7 @@ VIRTUAL ATTITUDES
         <script src="js/autopilot.js"></script>
         <script src="js/suicide.js"></script>
         <script src="js/liker.js"></script>
+        <script src="js/selfie.js"></script>
         <!--<script src="js/fullscreen.js"></script>-->
         <!--<script src="js/scroller.js"></script>-->
     </body>

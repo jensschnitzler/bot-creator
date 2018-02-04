@@ -220,6 +220,8 @@ hr {
   width: 100vw;
   height: 100vh;
   position: fixed;
+  background: rgba(0, 0, 70, 0.7);
+  z-index: 300;
 }
 
 .level.hidden {
@@ -231,14 +233,12 @@ hr {
   display: none;
 }
 
-.login-level {
-  background: #000046;
-  z-index: 400;
+.main-level {
+  z-index: 0;
 }
 
-.support-level {
-  background: rgba(102, 137, 255, 0.7);
-  z-index: 300;
+.login-level {
+  z-index: 400;
 }
 
 /* SLIDER */
@@ -368,15 +368,14 @@ hr {
 }
 
 .profilePic {
-  box-shadow: inset 0px 0.4rem 0.8rem 0px rgba(255, 255, 255, 0.2), inset 0 -0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
   height: 4rem;
   width: 4rem;
   border-radius: 50%;
   margin: .5rem;
-  background: #6689ff center center;
+  border: 0;
   background-repeat: no-repeat, no-repeat;
   background-size: cover;
-  background-image: url("https://pixel.nymag.com/imgs/daily/science/2016/05/03/super-recognizer/q7-3.png");
   transition: background-size 1s ease 0s;
 }
 
@@ -545,6 +544,23 @@ hr {
   width: auto;
   text-align: right;
   margin-top: .5rem;
+}
+
+/* USER INFO VIDEO */
+.vid {
+  overflow: hidden;
+}
+
+.vid video {
+  width: auto;
+  height: 100%;
+}
+
+.vid #snap {
+  z-index: 200;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* CONSOLE */
@@ -915,6 +931,22 @@ hr {
 .clicked, .inactive {
   /*color:  grey;*/
   opacity: .6;
+}
+
+.blur {
+  -webkit-filter: blur(1rem);
+  -moz-filter: blur(1rem);
+  -o-filter: blur(1rem);
+  -ms-filter: blur(1rem);
+  filter: blur(1rem);
+}
+
+.no-filter * {
+  -webkit-filter: none;
+  -moz-filter: none;
+  -o-filter: none;
+  -ms-filter: none;
+  filter: none;
 }
 
 /* SECTION */

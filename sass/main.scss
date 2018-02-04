@@ -240,6 +240,9 @@
     width:  100vw;
     height: 100vh;
     position: fixed;
+    background: rgba(0,0,70, .7);
+    z-index: 300;
+
     &.hidden {
       max-height: 0vh;
       max-width: 0vw;
@@ -248,16 +251,16 @@
       }
     }
   }
-
+  .main-level {
+    z-index: 0;
+  }
   .login-level {
     //display: none;
-    background: $color-Background;
+    //background: $color-Background;
     z-index: 400;
   }
-  .support-level {
+  .support-level, .profile-level {
     //display: none;
-    background: rgba(102,137,255, .7);
-    z-index: 300;
     //width:  0;
     //height: 0;
   }
@@ -382,17 +385,19 @@
     border: 0;
   }
   .profilePic {
-    box-shadow: inset 0px .4rem .8rem 0px rgba(255,255,255,.2), inset 0 -.3rem .8rem rgba(0,0,0,.1);
+    box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.3);
+    //box-shadow: inset 0px .4rem .8rem 0px rgba(255,255,255,.2), inset 0 -.3rem .8rem rgba(0,0,0,.1);
     height: 4rem;
     width: 4rem;
     border-radius: 50%;
     margin: .5rem;
+    border: 0;
 
     //background-blend-mode: multiply;
-    background: $color-ProfileFill center center;
+    //background: $color-ProfileFill center center;
     background-repeat: no-repeat, no-repeat;
     background-size: cover; // 100%, contain;
-    background-image: url("https://pixel.nymag.com/imgs/daily/science/2016/05/03/super-recognizer/q7-3.png");
+    //background-image: url("");
     transition: background-size 1s ease 0s;
 
 
@@ -560,6 +565,35 @@
     margin-top: .5rem;
   }
 
+/* USER INFO VIDEO */
+  .vid {
+
+    overflow: hidden;
+
+    * {
+      //position: fixed;
+      //-webkit-filter: blur(0px) invert(.8);
+      //filter: blur(0px) invert(.8);
+    }
+
+    video {
+      //z-index: 100;
+      width: auto;
+      height: 100%;
+
+      //-webkit-transform: scaleX(1) rotate(180deg);
+      //-moz-transform: scaleX(1) rotate(180deg);
+    }
+    canvas {
+      //background: black;
+      //width: 100vw;
+      //height: 100vh;
+    }
+    #snap {
+      z-index: 200;
+      border:0; margin:0;padding:0;
+    }
+  }
 /* CONSOLE */
   .console-unit.error {
     transition: padding-top .5s ease 0s;
@@ -875,6 +909,22 @@
     //pointer-events: none;
     /*color:  grey;*/
     opacity: .6;
+  }
+
+  .blur {
+    -webkit-filter: blur(1rem);
+    -moz-filter: blur(1rem);
+    -o-filter: blur(1rem);
+    -ms-filter: blur(1rem);
+    filter: blur(1rem);
+  }
+
+  .no-filter * {
+    -webkit-filter: none;
+    -moz-filter: none;
+    -o-filter: none;
+    -ms-filter: none;
+    filter: none;
   }
 
 /* SECTION */
