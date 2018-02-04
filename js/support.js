@@ -58,7 +58,7 @@
 /*--- Events ---*/
 $( function() {
   console.log( '### SUPPORT.JS ###' );
-  support1();
+  //support1();
 
 
 });

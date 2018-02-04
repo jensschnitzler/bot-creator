@@ -8,6 +8,8 @@
     /*do some log out animation stuff*/
   }
 
+
+
 /*--- Events ---*/
 
   $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
@@ -22,6 +24,16 @@
       }, logOutTime);
 
     });
+
+
+
+    // mobile friendly touch/hover effect for buttons
+    $( document ).on("mouseenter touchstart mouseleave touchend", ".myButton", function(e) {
+    //$('.myButton').bind('mouseenter touchstart mouseleave touchend', function(e) {
+        e.preventDefault();
+        $(this).toggleClass('hover');
+    });
+
 
   });
 

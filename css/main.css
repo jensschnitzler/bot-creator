@@ -399,17 +399,17 @@ hr {
   padding: .55rem .6rem 0 .6rem;
 }
 
-.myButton:hover {
+.myButton.create-bot {
+  background: #6689ff;
+  color: #fafafa;
+}
+
+.myButton.hover, .myButton:hover {
   background-color: #000046;
 }
 
 .myButton:active {
   top: 1px;
-}
-
-.myButton.create-bot {
-  background: #6689ff;
-  color: #fafafa;
 }
 
 /* Units */
@@ -925,6 +925,8 @@ hr {
     */
   max-height: 0;
   max-width: 0;
+  padding: 0;
+  margin: 0;
   overflow: hidden;
 }
 

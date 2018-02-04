@@ -418,7 +418,11 @@
     curor: pointer;
     padding: .55rem .6rem 0 .6rem;
 
-    &:hover {
+    &.create-bot {
+      background: $color-ProfileFill;
+      color: $color-Interface;
+    }
+    &.hover, &:hover {
       //background:linear-gradient(to bottom, #333 5%, #222 100%);
       background-color: $color-Background;
     }
@@ -427,10 +431,6 @@
       top:1px;
     }
 
-    &.create-bot {
-      background: $color-ProfileFill;
-      color: $color-Interface;
-    }
   }
 
 
@@ -902,6 +902,8 @@
     */
     max-height: 0;
     max-width: 0;
+    padding: 0;
+    margin: 0;
     overflow: hidden;
   }
 

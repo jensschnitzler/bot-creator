@@ -3,6 +3,35 @@
 
 /*--- Functions ---*/
 
+  function closeOverlays() {
+    $('.level').not('.main-level').each(function(){
+
+      var myOverlay = $(this);
+      myOverlay.addClass("removing").delay(1000).queue( function() {
+        myOverlay.addClass("hidden").dequeue();
+      });
+      //myOverlay.find('.window').addClass('hidden');
+      /*
+      myOverlay.find('.window').addClass("removing").delay(1000).queue( function() {
+        myOverlay.find('.window').addClass("hidden").dequeue();
+      });
+      */
+
+      if( myOverlay.is('.login-level') ) {
+        console.log('… removing login level …');
+        //support1();
+
+      } else if( myOverlay.is('.support-level') ){
+        console.log('… removing window on support level …');
+
+      } else {
+        console.log('… removing nothing from unknown level …');
+      }
+
+    });
+    $('.main-level').removeClass('blur');
+  }
+
   function createElement( myClass ) {
     /* set up and append a new window of a certain class/type */
     console.log( "create new element" );
@@ -28,6 +57,8 @@
       newWin.appendTo( $(".profile-level") );
       setRandomPosition( newWin );
       newWin.addClass('hidden');
+      //$('.profile-level').removeClass('hidden').removeClass('removing').show();
+      //$('.main-level').addClass('blur');
       //newWin.addClass( "mini" );   // add window class
 
     } else if( myClass === 'support' ) {
@@ -143,11 +174,13 @@ $( document ).ready(function() {
 
   console.log("### WINDOWS.JS ###");
 
+  /*
   // DEFAULTS:
-  $( ".window" ).each(function( index ) { // position windows randomly on load
+  $( ".window" ).each(function( index ) { // position windows centered on load
     setCenterPosition( $(this) );
     $(this).draggable({ stack: ".window" });
   });
+  */
 
   // CLICK "CLOSE":
   $( document ).on("click", ".close", function() { // works on class ".close" even if it's added after you bound the event handler
@@ -155,6 +188,8 @@ $( document ).ready(function() {
     myWindow.addClass("removing").delay(1000).queue( function() {
         $(this).addClass("hidden").dequeue();
     });
+
+    closeOverlays();
   });
 
   // LOGIN WINDOW:
@@ -165,16 +200,18 @@ $( document ).ready(function() {
   });
 
   $( document ).on("click", ".window", function() { // works on class ".close" even if it's added after you bound the event handler
+    closeOverlays();
+
+    /*
     var myLevel = $(this).parents(".level");
     var myWindow = $(this);
-
-    $('.main-level').removeClass('blur')
 
     if( myLevel.is('.login-level') ) {
       console.log('… removing login level …');
 
       myLevel.addClass("removing").delay(1000).queue( function() {
           $(this).addClass("hidden").dequeue().hide();
+          support1();
       });
     } else if( myLevel.is('.support-level') ){
       console.log('… removing window on support level …');
@@ -189,6 +226,7 @@ $( document ).ready(function() {
     } else {
       console.log('… removing nothing from unknown level …');
     }
+    */
 
   });
 
