@@ -67,6 +67,10 @@
 
   function postCounterEvents(){
 
+    if( postCounter === 3 ){
+      exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
+    }
+
     /*
 
     if( postCounter === 0 ){

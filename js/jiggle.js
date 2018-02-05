@@ -1,17 +1,14 @@
-// FUNCTIONS
+/*--- Comment ---*/
+// jiggle.js makes the profilePic shake on hover.
 
+/*--- Global Variables ---*/
 
+/*--- Global Functions ---*/
 
-// EVENTS
+/*--- Events ---*/
 
   $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
-
-    /*
-    $('.profilePic').hover(
-      function(){ $(this).addClass('shake') },
-      function(){ $(this).removeClass('shake') }
-    )
-    */
+    console.log( '### JIGGLE.JS ###' );
 
     // works on elements even when they're added after you bound the event handler
     var myInventoryList = $( '.inventory-list' );

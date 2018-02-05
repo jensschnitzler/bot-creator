@@ -4,6 +4,8 @@
 /*--- Functions ---*/
 
   function closeOverlays() {
+    $('.blur').removeClass('blur');
+
     $('.level').not('.main-level').each(function(){
 
       var myOverlay = $(this);
@@ -29,8 +31,7 @@
       }
 
     });
-    $('.main-level').removeClass('blur');
-  }
+  };
 
   function createElement( myClass ) {
     /* set up and append a new window of a certain class/type */
@@ -77,7 +78,7 @@
       //setRandomPosition( newWin );
       console.log("could not create new element")
     }
-  }
+  };
 
   function setCenterPosition( element ) {
     var docHeight = myDoc.height();
@@ -171,7 +172,6 @@
 /*--- Events ---*/
 
 $( document ).ready(function() {
-
   console.log("### WINDOWS.JS ###");
 
   /*
