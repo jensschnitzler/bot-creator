@@ -479,7 +479,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
   // CLICK "NEW POST":
   $( document ).on("click", ".profilePic", function() {
     var myButton = $( this );
-    if (!myButton.hasClass('clicked')) {
+    if (!myButton.hasClass('clicked') && !myButton.hasClass('user-img')) {
       myButton.addClass( 'clicked' );
       myButton.removeClass( 'shake' ); // from 'jiggle.js'
       $('.profilePic').addClass( 'clicked' ); // disable all profilePics

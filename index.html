@@ -14,9 +14,11 @@ VIRTUAL ATTITUDES
         <meta name="description" content="Create a bot">
 
         <!-- iPhone HTML app full screen mode - remove the URL and button bars -->
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- Sets the style of the status bar for a web application. -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <!-- disable viewport zooming -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 
         <!-- Helps prevent duplicate content issues -->
@@ -80,7 +82,7 @@ VIRTUAL ATTITUDES
                     <div class="c-header">social bot creator</div>
                     <div class="c-content">
                         <div class="user-info-container">
-                            <div class="user-img profilePic audio vid">
+                            <div class="user-img profilePic audio vid error">
                                 <!-- https://codepen.io/JensSchnitzler/pen/MOarbK -->
                                 <video id="video" autoplay></video>
                                 <!--
@@ -238,6 +240,12 @@ VIRTUAL ATTITUDES
             </div>
         </div>
 
+        <!--
+        <div>
+            <input type="file" accept="video/*;capture=camcorder">
+        </div>
+        -->
+
         <!-- Secret Audio Area -->
 
         <audio id="myAudioPlayer" loop controls>
@@ -264,7 +272,7 @@ VIRTUAL ATTITUDES
         <!--<script src="js/autopilot.js"></script>-->
         <!--<script src="js/suicide.js"></script>-->
         <script src="js/liker.js"></script>
-        <script src="js/selfie.js"></script>
+        <!--<script src="js/selfie.js"></script>-->
         <!--<script src="js/fullscreen.js"></script>-->
         <!--<script src="js/scroller.js"></script>-->
     </body>
