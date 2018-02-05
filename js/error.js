@@ -10,6 +10,14 @@
 
 /*--- Global Functions ---*/
 
+  function randomInterval( myFunction, minTime, maxTime ){
+    setInterval(function(){
+        myFunction();
+        maxTime = maxTime - minTime;
+        randomTime = Math.floor((Math.random() * maxTime) + minTime);
+    }, randomTime );
+  }
+
   function myErrorFunction( code ){
 
     console.log('ERROR FUNCTION');
@@ -17,10 +25,13 @@
 
     if( code === 'autoPost' ){
       //autoPost();
-      var loadingTime = 2000;
-      setInterval( function() {
-        loadPost( loadingTime );
-      }, loadingTime + 2000 );
+      if(! $('body').hasClass('auto-post') ){
+        $('body').addClass('auto-post');
+        var loadingTime = 2000;
+        setInterval( function() {
+          loadPost( loadingTime );
+        }, loadingTime + 2000 );
+      }
 
     } else if( code === 'flicker' ){
       flickerTextInterval();
@@ -38,40 +49,20 @@
     } else if( code === 'changeBackground' ){
       changeBackground();
 
-    } else if( code === 'autoBot' ){
-      autoBot();
+    } else if( code === 'glitchRepeat' ){ // post-related error
+      randomInterval( glitchRepeat, 4000, 10000 );
 
-    } else if( code === 'glitchRepeat' ){
-      setInterval(function(){ glitchRepeat(); }, 10000);
+    } else if( code === 'distortFace' ){
+      randomInterval( distortFace, 15000, 35000 );
+
+    } else if( code === 'silva' ){
+      randomInterval( silva, 20000, 35000 );
 
     }
 
-  }
-
-  function autoBot( loadCycleTime ){
-      //var loadCycleTime = 5000;
-
-      myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
-      crazyTime = true; // trigger crazySlider
-
-      var timerID = setInterval(function () {
-        loadBot( loadCycleTime );
-      }, loadCycleTime);
-
-      allCrazySliders( loadCycleTime );
-
-      setTimeout(function(){
-        support2();
-      }, 3000);
   }
 
   function postCounterEvents(){
-
-    if( postCounter === 3 ){
-      exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
-    }
-
-    /*
 
     if( postCounter === 0 ){
       $('.inventory-list .placeholder').first().animate({opacity: 0});
@@ -79,20 +70,20 @@
       $('.inventory-list .placeholder').first().fadeOut();
     }
     if( postCounter === 1 ){
-      myErrorFunction( 'picMessage' );
+      //myErrorFunction( 'picMessage' );
     }
     if( postCounter === 2 ){
       myErrorFunction( 'flicker' );
     }
     if( postCounter === 3 ){
-      //glitchRepeat();
+      exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
     }
     if( postCounter === 4 ){
-      myErrorFunction( 'picMessage' );
+      //myErrorFunction( 'picMessage' );
       myErrorFunction( 'glitchRepeat' );
     }
     if( postCounter === 5 ){
-      myErrorFunction( 'vidMessage' );
+      //myErrorFunction( 'vidMessage' );
     }
     if( postCounter === 8 ){
       myErrorFunction( 'autoPost' );
@@ -108,11 +99,11 @@
       //latestPost.appendTo('main-level');
 
     }
-    if( postCounter === 12 ){
-      myErrorFunction( 'autoBot' );
-    }
     if( postCounter === 13 ){
-
+      exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
+    }
+    if( postCounter >= 15 ){
+      //support3();
     }
     if( postCounter === 20 ){
       support3();
@@ -120,46 +111,53 @@
     if( postCounter === 30 ){
       support4();
     }
-    */
   }
 
   function botCounterEvents(){
 
-    /*
+    var randomTime = Math.floor((Math.random() * 2000) + 500); // get a random time between 500 and 2000 ms
+    setTimeout(function(){
 
-    if( botCounter === 3){
-      myTerminal.addClass('error');
-      myConsole.addClass('error');
-      myTerminalContent.prepend('<p>initiating terminal</p>');
-    }
-    if( botCounter === 4){
-      myTerminalContent.prepend('<p>checking bot activity</p>');
-    }
-    if( botCounter === 5){
-      myTerminalContent.prepend('<p>bot limit almost reached</p>');
-      //myTerminalHead.html('alert: overwrite');
-    }
-    if( botCounter === 6){
-      myTerminalContent.prepend('<p>bot limit almost reached</p>');
-      //myTerminalHead.html('alert: overwrite');
-    }
-    if( botCounter === 7){
-      myErrorFunction( 'autoBot' );
-    }
-    if( botCounter === 15){
-      myErrorFunction( 'changeBackground' );
-    }
-    if( botCounter >= 17){
-      distortFace();
-    }
-    if( botCounter >= 19){
-      glitchStripes();
-    }
-    if( botCounter === 22){
-      myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
-    }
+      if( botCounter === botLimit-3 ){
+        myTerminal.addClass('error');
+        myConsole.addClass('error');
+        myTerminalContent.prepend('<p>initiating terminal</p>');
+      }
+      if( botCounter === botLimit-2 ){
+        myTerminalContent.prepend('<p>checking bot activity</p>');
+      }
+      if( botCounter === botLimit-1 ){
+        myTerminalContent.prepend('<p>bot limit almost reached</p>');
+        myTerminalHead.html('alert');
+      }
+      if( botCounter === botLimit+2 ){
 
-    */
+      }
+      if( botCounter === botLimit+4 ){
+        myErrorFunction( 'distortFace' );
+        myErrorFunction( 'autoPost' );
+      }
+      if( botCounter === botLimit+6 ){
+        glitchStripes();
+      }
+      if( botCounter === botLimit+8 ){
+        myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
+      }
+      if( botCounter === botLimit+10 ){
+        myErrorFunction( 'changeBackground' );
+      }
+      if( botCounter === botLimit+12 ){
+        flickerTextInterval();
+        flickerInterval();
+      }
+      if( botCounter === botLimit+14 ){
+        exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
+      }
+      if( botCounter === botLimit+20 ){
+        myErrorFunction( 'silva' );
+      }
+
+    }, randomTime);
 
   }
 
@@ -210,7 +208,7 @@
 
   function changeBackground(){
     $( 'body' ).animate({body: '#000'});
-    $( '.overlay.error' ).fadeTo( 30000 , .4, function() {
+    $( '.overlay.error' ).fadeTo( 1200000 , .3, function() {
       // Animation complete.
     });
   }
@@ -218,7 +216,7 @@
   function distortFace(){
     console.log( '## distortFace ##' );
     var myFace = $( '.profilePic:visible' ).random();
-    myFace.css( 'background-size','1000% 100%' ); // animate with css transition!
+    myFace.css( 'background-size','300% 100%' ); // animate with css transition!
 
     /* // following doesnt work
     myFace.css( 'background-size','100% auto' );

@@ -29,28 +29,30 @@
 
 /*--- Functions ---*/
 
-  function crazySlider( input, min, max, time ){
+  function crazySlider( input, min, max ){ // ,time
     console.log('## crazySlider ##');
-    setInterval(function(){
+    //setInterval(function(){
+
+      max = max - min;
 
       var random = Math.round( (Math.random() * max) + min );
 
       input.val( random );
       displayVals( input );
 
-    }, time );
+    //}, time );
 
   };
 
-  function allCrazySliders( time ){
+  function allCrazySliders(){ // time
     console.log('## allCrazySliders ##');
-    console.log('# It is  crazy slider time #');
+    console.log('# It is crazy slider time #');
 
     $('input.slider').each( function() {
         var mySlider = $( this );
         var min = mySlider.prop('min');
         var max = mySlider.prop('max');
-        crazySlider( mySlider, min, max, time );
+        crazySlider( mySlider, min, max ); // ,time
       });
 
   };
@@ -97,6 +99,8 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
     displayVals( this );
   })
 
+
+  /*
   var crazyTimeChecker = setInterval(function(){
 
     console.log('## crazyTimeChecker ##');
@@ -107,6 +111,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
     }
 
   }, 3000);
+  */
 
 });
 

@@ -6,12 +6,16 @@
   function closeOverlays() {
     $('.blur').removeClass('blur');
 
-    $('.level').not('.main-level').each(function(){
+    $('.level').not('.main-level, .hidden').each(function(){
 
       var myOverlay = $(this);
-      myOverlay.addClass("removing").delay(1000).queue( function() {
+      myOverlay.addClass("hidden");
+
+      /*
+      myOverlay.addClass("removing").delay(500).queue( function() {
         myOverlay.addClass("hidden").dequeue();
       });
+      */
       //myOverlay.find('.window').addClass('hidden');
       /*
       myOverlay.find('.window').addClass("removing").delay(1000).queue( function() {
@@ -21,6 +25,7 @@
 
       if( myOverlay.is('.login-level') ) {
         console.log('… removing login level …');
+        setTimeout(function(){ support1(); }, 1000);
         //support1();
 
       } else if( myOverlay.is('.support-level') ){

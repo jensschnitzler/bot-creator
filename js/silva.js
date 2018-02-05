@@ -8,6 +8,11 @@
 /*--- Functions ---*/
 
   function silva( element ){
+
+    if ( element == null ){
+      element = $('div').random();
+    }
+
     var originalString = element.html();
 
     console.log( 'silva: ' + originalString );
@@ -16,7 +21,7 @@
     var myCharacters = originalString.split();
     var randomCharacter = myCharacters[Math.floor(Math.random() * myCharacters.length)];
 
-    var newString = originalString.replace( randomCharacter, '#' ); // replace 'a'/'A' character with '!'
+    var newString = originalString.replace( randomCharacter, '/ERROR/' ); // replace 'a'/'A' character with '!'
 
     element.html( newString );
 
@@ -25,7 +30,6 @@
       element.html( originalString );
     }, 120);
     */
-
   }
 
   // The Random Function
@@ -37,14 +41,20 @@
 
   $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
 
+    /*
     setInterval(function(){
+      console.log('silvaTime: …')
       if( silvaTime === true ){
+        console.log('… yes')
         var myElement = $('div').random();
         //myElement.css('background','red'); // debug
         silva( myElement );
-        randomTime = Math.floor((Math.random() * 1000) + 1);
+        randomTime = Math.floor((Math.random() * 6000) + 1000);
+      } else {
+        console.log('… not yet')
       }
-    }, 2000 + randomTime );
+    }, 7000 + randomTime );
+    */
 
   });
 

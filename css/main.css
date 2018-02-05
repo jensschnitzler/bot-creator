@@ -403,11 +403,11 @@ hr {
 
 .myButton {
   min-width: 8rem;
-  curor: pointer;
+  cursor: pointer;
   padding: .55rem .6rem 0 .6rem;
 }
 
-.myButton.create-bot {
+.myButton.create-bot, .myButton.auto-create-bot {
   background: #6689ff;
   color: #fafafa;
 }
@@ -575,7 +575,7 @@ hr {
 /* CONSOLE */
 .console-unit.error {
   transition: padding-top .5s ease 0s;
-  padding-top: 20vh;
+  padding-top: 5rem;
 }
 
 .console {
@@ -664,7 +664,7 @@ hr {
 
 .terminal.error {
   transition: max-height .5s ease 0s;
-  max-height: 20vh;
+  max-height: 5rem;
   border-bottom: 1px solid #000046;
 }
 
@@ -1084,8 +1084,8 @@ hr {
 
 .glitchStripe {
   pointer-events: none;
-  background-color: rgba(0, 0, 255, 0.025);
-  box-shadow: 0px 0px 10vh 5vh rgba(0, 0, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.005);
+  box-shadow: 0px 0px 10vh 5vh rgba(255, 255, 255, 0.02);
   display: block;
   width: 100vw;
   height: 5vh;
@@ -1093,7 +1093,7 @@ hr {
   top: 0vh;
   left: 0;
   z-index: 1000;
-  animation: glitchStripeAnimation 9s linear infinite;
+  animation: glitchStripeAnimation 10s linear infinite;
 }
 
 @keyframes glitchStripeAnimation {

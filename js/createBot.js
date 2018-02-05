@@ -7,7 +7,9 @@
   /* array/object that contains all the bots */
   var myBotsArray = [];
   var botCounter = -1;
+  var botLimit = 5;
   var postCounter = -1;
+  var postLimit = 12;
   /* This should be done as soon as the website has loaded: Get all possible bot data into cool arrays with "getAjaxBotData()" */
   var myArray = [];
   var myNamesArray = [];
@@ -237,8 +239,16 @@
       );
   };
 
-  function newPost() {
-    if( myBotsArray.length !== 0 ) {
+  var processingPost = false;
+
+  function newPost( myTime ) {
+    if( myBotsArray.length !== 0 && processingPost === false ) {
+
+      processingPost = true;
+      loadProcessB( myTime, '.loadPost' );
+
+    /* post preparation */
+
       // get bot data:
       getRandomFrom( myBotsArray ); // returns "myValue"
       var myBot = myValue;
@@ -262,10 +272,7 @@
         var randomVid = myValue;
         //$('.myBubble').first().addClass('imgBubble');
         //var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
-
-
         var myBotMessage = '<video autoplay loop><source src="' + url + 'vid/' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
-
 
       } else {
         getRandomFrom( myBot.messages ); // returns "myValue"
@@ -303,27 +310,29 @@
         myListElement.addClass( 'reverse' );
       }
 
-      myListElement.append(myProfilePic).append(myBubble).prependTo( feedList );
+    /* post creation */
 
-      jumpBall( myInventoryProfilePic, myProfilePic );
+      var loadingTimeout = setTimeout(function() {
+        processingPost = false;
+        myListElement.append(myProfilePic).append(myBubble).prependTo( feedList );
+        jumpBall( myInventoryProfilePic, myProfilePic );
+        setTimeout( function() {
+          myListElement.animate({maxHeight: '100vh', opacity: '1'}, 300, "swing");
+        }, 100);
 
-      setTimeout( function() {
-        myListElement.animate({maxHeight: '100vh', opacity: '1'}, 300, "swing");
-      }, 100);
+      }, myTime);
+
+    /* post limit error: post leaves feed */
+
+      if ( postCounter >= postLimit ) {
+        myListElement.appendTo('main-level');
+        myListElement.addClass( 'error' );
+        setRandomPosition( myListElement );
+      }
 
     } else {
-      alert('newPost failed: No bot data available!');
+      alert('newPost failed: No bot data available! // Already processing Post!');
     }
-
-    /* error: post leaves feed*/
-    /*
-    if ( postCounter >= 6 ) {
-      myListElement.appendTo('main-level');
-      myListElement.addClass( 'error' );
-      setRandomPosition( myListElement );
-    }
-    */
-
   };
 
   function jumpBall( element1, element2 ) {
@@ -392,7 +401,65 @@
     },interval);
   }
 
+  function loadProcessB( myTime, myElement ) {
+    var i = 0;
+    var interval = myTime/100;
+    /* get loading elements */
+    var myLoadContainer = $( myElement );
+    var myLoadBar = myLoadContainer.find('.load-bar span');
+    var myLoadStatus = myLoadContainer.children('.load-status');
+    /* show loading elements */
+    myLoadContainer.slideDown().animate({opacity: 1});
+
+    var timerID = setInterval(function () {
+      i ++;
+      /* show loading status */
+      myLoadBar.css("width", i + "%" );
+      //myLoadStatus.html( "<span>" + i + "</span>%" );
+      myLoadStatus.html( i );
+
+      if( i === 100 ) {
+        audioButton(); // make a sound
+        myLoadStatus.html( 'complete' );
+        clearInterval( timerID );
+
+        setTimeout( function() { // reset/hide loadBar and loadStatus after short time
+          myLoadContainer.animate({opacity: 0}).slideUp();
+          myLoadStatus.html( '' );
+        }, 500);
+      }
+    },interval);
+  }
+
+  function autoBot( loadCycleTime ){
+    console.log('## autoBot ##');
+
+    myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
+
+    if ( loadCycleTime == null ){
+      loadCycleTime = 5000;
+    }
+
+    setInterval(function () {
+      allCrazySliders();
+      allRandomSelect();
+      loadBot( loadCycleTime );
+    }, loadCycleTime + 2000); // +1000 to have a little break
+
+    setTimeout(function(){
+      support2();
+    }, 3000);
+
+    /*
+
+    //crazyTime = true; // trigger crazySlider
+    allCrazySliders( loadCycleTime );
+
+    */
+  }
+
   function loadBot( myTime ) {
+    console.log('## loadBot ##');
     botCounter++; // increase botCounter by 1
     loadProcess( myTime, '.loadBot', newBot );
     $('.inventory-unit').removeClass('hidden');
@@ -401,7 +468,8 @@
 
   function loadPost( myTime ) {
     postCounter++; // increase postCounter by 1
-    loadProcess( myTime, '.loadPost', newPost );
+    //loadProcess( myTime, '.loadPost', newPost );
+    newPost( myTime );
     $('.feed-unit').removeClass('hidden');  // show the feed, where the post goes
     postCounterEvents(); // triggers post-related events
   };
@@ -443,36 +511,30 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
   // CLICK "CREATE-BOT":
   var botClicks = 0;
 
-  $( ".create-bot" ).click( function() {
-    var botLimit = 7;
-    var loadingTime = 3000;
+  $( document ).on("click", ".create-bot", function() {
     var myButton = $( this );
-
-    if (!myButton.hasClass( 'clicked' )){
-
+    if( !myButton.hasClass( 'clicked' ) ){
+      var loadingTime = 3000;
       myButton.addClass( 'clicked' );
       botClicks++; // increase botClicks by 1
-      //console.log('create-bot clicked - botClicks: ' + botClicks );
 
-      if( botClicks > botLimit ){
+      loadBot( loadingTime );
 
-        autoBot( loadingTime );
+      setTimeout( function() {
+        myButton.removeClass( 'clicked' );
+        if( botClicks == botLimit ){
+          myButton.html('auto-create bots').addClass('auto-create-bot').removeClass('create-bot');
+        }
+      }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
+    }
+  });
 
-      } else {
-
-        loadBot( loadingTime );
-
-        setTimeout( function() {
-          myButton.removeClass( 'clicked' );
-          if( botClicks == botLimit ){
-            myButton.html('auto-create bots');
-          }
-        }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
-
-      }
-
-    } else {
-      audioUnclickable();
+  $( document ).on("click", ".auto-create-bot", function() {
+    console.log('clicked auto-create-bot');
+    var myButton = $( this );
+    if( !myButton.hasClass( 'clicked' ) ){
+      autoBot( 4000 );
+      myButton.addClass( 'clicked' );
     }
   });
 
@@ -491,8 +553,6 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
         myButton.removeClass( 'clicked' );
         $('.profilePic').removeClass( 'clicked' ); // re-enable all profilePics
       }, loadingTime + 1000 ); // loadingTime + time to slideUp loading elements
-    } else {
-      audioUnclickable();
     }
   });
 
@@ -507,7 +567,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
         $('.feed-post.placeholder').find('span').each( function() {
           $( this ).toggle();
         });
-      }, 3000);
+      }, 6000);
 
       var i = 0;
 
@@ -524,7 +584,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
         } else {
           console.log( '… no bots found (' + i + ')' );
         }
-      }, 3000);
+      }, 10000);
     }
   });
 

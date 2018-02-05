@@ -28,6 +28,25 @@
 
   }
 
+  function randomSelect( mySelect, myArray ){
+    var randomVal = myArray[ Math.floor( Math.random() * myArray.length ) ];
+    mySelect.html( randomVal );
+  }
+
+  function allRandomSelect(){
+    console.log('## allRandomSelect ##');
+
+    $('a.select').each( function() {
+      var mySelect = $(this);
+
+      if ( mySelect.is('.select-objective') ) {
+        randomSelect( mySelect, objectiveArray );
+      } else if ( mySelect.is('.select-supporting') ) {
+        randomSelect( mySelect, supportingArray );
+      } else {/*do nothing*/}
+    });
+  };
+
 /*--- Events ---*/
 
   $( function() {

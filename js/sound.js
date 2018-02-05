@@ -47,6 +47,10 @@
 /*--- Events ---*/
 $( function() {
 
+  $( document ).on("click", ".clicked", function() {
+    audioUnclickable();
+  });
+
   $(".audio")
     .mouseenter(function() {
       audioSciFi();

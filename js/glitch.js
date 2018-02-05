@@ -16,7 +16,7 @@ function glitchRepeat(){
   //element.addClass('debug');
   //container.addClass('debug');
 
-  for (var i = 1; i < 10; i++) {
+  for (var i = 1; i < 6; i++) {
 
     var clone = element.clone();
 

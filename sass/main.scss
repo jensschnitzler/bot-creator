@@ -422,10 +422,10 @@
   }
   .myButton {
     min-width: 8rem;
-    curor: pointer;
+    cursor: pointer;
     padding: .55rem .6rem 0 .6rem;
 
-    &.create-bot {
+    &.create-bot, &.auto-create-bot {
       background: $color-ProfileFill;
       color: $color-Interface;
     }
@@ -604,7 +604,7 @@
 /* CONSOLE */
   .console-unit.error {
     transition: padding-top .5s ease 0s;
-    padding-top: 20vh;
+    padding-top: 5rem;
   }
   .console {
     padding: .5rem 0rem 1rem 0rem; // .5rem .5rem 1rem .5rem;
@@ -677,7 +677,7 @@
   }
   .terminal.error {
     transition: max-height .5s ease 0s;
-    max-height: 20vh; // must be same as "height" of .terminal
+    max-height: 5rem; // must be same as "height" of .terminal
     border-bottom: 1px solid $color-Background;
   }
 
@@ -1049,8 +1049,8 @@
 
 .glitchStripe {
   pointer-events: none;
-  background-color: rgba(0,0,255,.025);
-  box-shadow: 0px 0px 10vh 5vh rgba(0,0,255,.05);
+  background-color: rgba(255,255,255,.005);
+  box-shadow: 0px 0px 10vh 5vh rgba(255,255,255,.02);
   display: block;
   width: 100vw;
   height: 5vh;
@@ -1058,7 +1058,7 @@
   top: 0vh;
   left: 0;
   z-index: 1000;
-  animation: glitchStripeAnimation 9s linear infinite;
+  animation: glitchStripeAnimation 10s linear infinite;
 }
   @keyframes glitchStripeAnimation {
     0% { top: -10vh; } // -height

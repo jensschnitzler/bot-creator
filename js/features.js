@@ -20,7 +20,6 @@
         $('.login-level').removeClass('hidden');
         location.reload(); // refresh page
       }, logOutTime);
-
     });
 
 
