@@ -24,14 +24,16 @@
     });
 
 
-
     // mobile friendly touch/hover effect for buttons
-    $( document ).on("mouseenter touchstart", ".myButton, a", function() {
+    $( document ).on("mouseenter mousedown touchstart", ".myButton, a, .select", function() {
         $(this).addClass('hover');
     });
 
-    $( document ).on("mouseleave touchend", ".myButton, a", function() {
+    $( document ).on("mouseleave mouseup touchend", ".myButton, a, .select", function() {
         $(this).removeClass('hover');
+        setTimeout(function(){
+          $(this).removeClass('hover');
+        }, 1000);
     });
 
 
