@@ -296,8 +296,8 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 1rem;
-    height: 1rem;
+    width: 1.4rem;
+    height: 1.4rem;
     border-radius: 50%;
     cursor: pointer;
     box-shadow:inset 0px .4rem .8rem 0px rgba(255,255,255,.25);
@@ -430,7 +430,7 @@
       background: $color-ProfileFill;
       color: $color-Interface;
     }
-    &.hover, &:hover {
+    &.hover { /* , &:hover */
       //background:linear-gradient(to bottom, #333 5%, #222 100%);
       background-color: $color-Background;
     }
@@ -625,7 +625,7 @@
     //margin-bottom: 2rem;
     position: relative;
     text-align: center;
-    padding: .5rem 0 .5rem 0
+    padding: .6rem 0 .6rem 0
   }
   .load-container {
     //display: none;

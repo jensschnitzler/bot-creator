@@ -26,10 +26,12 @@
 
 
     // mobile friendly touch/hover effect for buttons
-    $( document ).on("mouseenter touchstart mouseleave touchend", ".myButton", function(e) {
-    //$('.myButton').bind('mouseenter touchstart mouseleave touchend', function(e) {
-        //e.preventDefault();
-        $(this).toggleClass('hover');
+    $( document ).on("mouseenter touchstart", ".myButton, a", function() {
+        $(this).addClass('hover');
+    });
+
+    $( document ).on("mouseleave touchend", ".myButton, a", function() {
+        $(this).removeClass('hover');
     });
 
 
