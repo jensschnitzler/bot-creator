@@ -630,6 +630,10 @@
     //display: none;
   }
 
+  .select-supporting::before {
+    content: '#';
+  }
+
 /* TERMINAL */
   .terminal {
     //max-height: 20vh;

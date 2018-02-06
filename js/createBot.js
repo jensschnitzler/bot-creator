@@ -126,6 +126,9 @@
     var myImage = 'img/faces/' + randomKey + '.png'; // botCounter
     //console.log( 'myImage: ' + myImage );
 
+    var mySupportingVal = $('.select-supporting').first().html();
+    console.log( 'mySupportingVal: ' + mySupportingVal );
+
     // CREATE BOT OBJECT AND PUSH TO "myBotsArray"
 
     /* push new bot data */
@@ -134,7 +137,7 @@
       name: myName,
       image: myImage,
       messages:[ '…', ';-)'],
-      supporting:[ '#hashtag' , '#facebook'],
+      supporting:[ mySupportingVal ],
       activity:'70',
       activityDescription:'',
       followers: '123',
@@ -150,11 +153,13 @@
       myBotsArray[ botCounter ].messages.push( myMessage );
       //console.log( 'myMessage: ' + myMessage );
 
-      /* get random hashtag from myHashtagsArray */
+      /* get random hashtag from myHashtagsArray for random support */
+      /*
       getRandomFrom( myHashtagsArray );
       var myHashtag = myValue;
       myBotsArray[ botCounter ].supporting.push( myHashtag );
       //console.log( 'myHashtag: ' + myHashtag );
+      */
     }
 
     // OUTPUT
@@ -200,6 +205,9 @@
     var myListElement = $( "<li/>" ); // creates a li element
     var myProfilePic = $( "<div/>" )
                           .addClass( "profilePic" )
+                          .addClass("profilePic" + botID )
+                          .data( 'data-botID', botID )
+                          .removeAttr('style')
                           .html('');
 
     myListElement.append(myProfilePic).prependTo(inventoryList);
@@ -213,7 +221,7 @@
       }")
       .appendTo( "head" );
 
-    myProfilePic.addClass("profilePic" + botID ).removeAttr('style');
+    //myProfilePic.addClass("profilePic" + botID ).removeAttr('style');
 
     // change inventory title:
     var counter = botID + 1; // bescause botID starts with 0
@@ -241,7 +249,7 @@
 
   var processingPost = false;
 
-  function newPost( myTime ) {
+  function newPost( myTime, myBot ) {
     if( myBotsArray.length !== 0 && processingPost === false ) {
 
       processingPost = true;
@@ -250,31 +258,34 @@
     /* post preparation */
 
       // get bot data:
-      getRandomFrom( myBotsArray ); // returns "myValue"
-      var myBot = myValue;
-      var myBotID = myValue.id;
-
+      //getRandomFrom( myBotsArray ); // returns "myValue"
+      //var myBot = myValue;
+      var myBotID = myBot.id;
+      var myBotSupporting = myBot.supporting;
 
       /* text, picture or video message? */
       var messageKey = Math.random() * 4; // get random key: 0–4
-      console.log( 'random message key:' + messageKey );
-      if( messageKey <= 1 ){
-        var picArray = [ '0.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg' ];
+      console.log( 'random message key: ' + messageKey );
+      console.log( 'myBot.supporting: ' + myBot.supporting );
+
+      if( messageKey <= 1 ){ // image
+        var picArray = [ '0.jpg','1.jpg','2.jpg' ];
         getRandomFrom( picArray ); // returns myValue
         var randomPic = myValue;
-        //$('.myBubble').first().addClass('imgBubble');
-        var myBotMessage = '<img src="' + url + 'img/messages/' + randomPic + '" class="" alt="error">';
 
-      } else if( messageKey <= 2 ) {
-        //var vidArray = [ 'trump-2.gif','bird.gif' ];
-        var vidArray = [ 'trump.mp4' ];
+        //$('.myBubble').first().addClass('imgBubble');
+        var myBotMessage = '<img src="' + url + 'img/messages/' + myBotSupporting + '/' + randomPic + '" class="" alt="error">';
+
+      } else if( messageKey <= 2 ) { // video
+        var vidArray = [ '1.mp4','2.mp4' ];
         getRandomFrom( vidArray ); // returns myValue
         var randomVid = myValue;
+
         //$('.myBubble').first().addClass('imgBubble');
         //var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
-        var myBotMessage = '<video autoplay loop><source src="' + url + 'vid/' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
+        var myBotMessage = '<video autoplay loop><source src="' + url + 'vid/' + myBotSupporting + '/' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
 
-      } else {
+      } else { // text
         getRandomFrom( myBot.messages ); // returns "myValue"
         var myBotMessage = '<p>' + myValue + '</p>';
       }
@@ -466,10 +477,20 @@
     botCounterEvents();
   };
 
-  function loadPost( myTime ) {
+  function loadPost( myTime, myBot ) {
+
+    if ( myBot == null ){
+      getRandomFrom( myBotsArray ); // returns "myValue"
+      var myBot = myValue;
+    }
+
+    if ( myTime == null || !myTime > 0 ){
+      var myTime = 5000;
+    }
+
     postCounter++; // increase postCounter by 1
     //loadProcess( myTime, '.loadPost', newPost );
-    newPost( myTime );
+    newPost( myTime, myBot );
     $('.feed-unit').removeClass('hidden');  // show the feed, where the post goes
     postCounterEvents(); // triggers post-related events
   };
@@ -548,7 +569,9 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
 
       console.log('create-post clicked - postCounter: ' + postCounter );
       var loadingTime = 3000;
-      loadPost( loadingTime );
+      var myBotID = myButton.data( 'data-botID' );
+      var myBot = myBotsArray[ myBotID ];
+      loadPost( loadingTime, myBot );
       setTimeout( function() {
         myButton.removeClass( 'clicked' );
         $('.profilePic').removeClass( 'clicked' ); // re-enable all profilePics

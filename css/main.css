@@ -601,6 +601,10 @@ hr {
   padding: .6rem 0 .6rem 0;
 }
 
+.select-supporting::before {
+  content: '#';
+}
+
 /* TERMINAL */
 .terminal {
   max-height: 0px;

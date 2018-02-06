@@ -3,7 +3,7 @@
 
 /*--- Global Variables ---*/
   var objectiveArray = ['foster fame','spamming','mischief','bias public opinion','influence trends','like-follow','discretitize','attack free speech'];
-  var supportingArray = ['#trump','#brexit','#bernie','#russia','#maga','#metoo','#erdogan','#assad'];
+  var supportingArray = [ 'happy','foodporn','dumptrump','trump','brexit','bernie','russia','maga','metoo'];
   var mySelectObjective = $('.select-objective');
   var mySelectSupporting = $('.select-supporting');
 
