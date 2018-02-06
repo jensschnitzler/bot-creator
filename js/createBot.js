@@ -283,7 +283,7 @@
 
         //$('.myBubble').first().addClass('imgBubble');
         //var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
-        var myBotMessage = '<video autoplay loop><source src="' + url + 'vid/' + myBotSupporting + '/' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
+        var myBotMessage = '<video autoplay loop><source src="' + url + 'vid/' + myBotSupporting + '/' + myBotSupporting + '-' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
 
       } else { // text
         getRandomFrom( myBot.messages ); // returns "myValue"
