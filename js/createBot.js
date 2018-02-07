@@ -15,6 +15,15 @@
   var myNamesArray = [];
   var myHashtagsArray = [];
   var myMessagesArray = [];
+  var bernieMessagesArray = [];
+  var brexitMessagesArray = [];
+  var dumptrumpMessagesArray = [];
+  var foodpornMessagesArray = [];
+  var happyMessagesArray = [];
+  var magaMessagesArray = [];
+  var metooMessagesArray = [];
+  var russiaMessagesArray = [];
+  var trumpMessagesArray = [];
 
 // FUNCTIONS
 
@@ -37,10 +46,82 @@
     .fail(function(){console.log( "error" );})
     .always(function(){console.log( "complete" );});
 
-    /* get JSON messages */
-    $.getJSON( "js/json/trump.js", function( result ) {
-      myMessagesArray = result;
-      console.log( 'myMessagesArray: ' + result );
+    /* get JSON messages supporting bernie */
+    $.getJSON( "js/json/supporting/bernie.js", function( result ) {
+      bernieMessagesArray = result;
+      console.log( 'bernieMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting brexit */
+    $.getJSON( "js/json/supporting/brexit.js", function( result ) {
+      brexitMessagesArray = result;
+      console.log( 'brexitMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting dumptrump */
+    $.getJSON( "js/json/supporting/dumptrump.js", function( result ) {
+      dumptrumpMessagesArray = result;
+      console.log( 'dumptrumpMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting foodporn */
+    $.getJSON( "js/json/supporting/foodporn.js", function( result ) {
+      foodpornMessagesArray = result;
+      console.log( 'foodpornMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting happy */
+    $.getJSON( "js/json/supporting/happy.js", function( result ) {
+      happyMessagesArray = result;
+      console.log( 'happyMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting maga */
+    $.getJSON( "js/json/supporting/maga.js", function( result ) {
+      magaMessagesArray = result;
+      console.log( 'magaMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting metoo */
+    $.getJSON( "js/json/supporting/metoo.js", function( result ) {
+      metooMessagesArray = result;
+      console.log( 'metooMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting russia */
+    $.getJSON( "js/json/supporting/russia.js", function( result ) {
+      russiaMessagesArray = result;
+      console.log( 'russiaMessagesArray: ' + result );
+    })
+    .done(function(){console.log( "done" );})
+    .fail(function(){console.log( "error" );})
+    .always(function(){console.log( "complete" );});
+
+    /* get JSON messages supporting trump */
+    $.getJSON( "js/json/supporting/trump.js", function( result ) {
+      trumpMessagesArray = result;
+      console.log( 'trumpMessagesArray: ' + result );
     })
     .done(function(){console.log( "done" );})
     .fail(function(){console.log( "error" );})
@@ -136,7 +217,7 @@
       id: botCounter,
       name: myName,
       image: myImage,
-      messages:[ '…', ';-)'],
+      messages:[ '*lol*', ';-)'],
       supporting:[ mySupportingVal ],
       activity:'70',
       activityDescription:'',
@@ -146,9 +227,12 @@
 
     // DETERMINE AND PUSH ARRAY VARIABLES
 
-    for (i = 0; i < 5; i++) {
+    var myMessagesArray = window[ mySupportingVal + 'MessagesArray' ]; // window[…] is needed to turn the string into a variable-name
+    console.log( 'myMessagesArray: ' + myMessagesArray );
+
+    for (i = 0; i < 10; i++) {
       /* get random message from myMessagesArray */
-      getRandomFrom( myMessagesArray );
+      getRandomFrom( myMessagesArray ); // myMessagesArray
       var myMessage = myValue;
       myBotsArray[ botCounter ].messages.push( myMessage );
       //console.log( 'myMessage: ' + myMessage );
@@ -283,7 +367,7 @@
 
         //$('.myBubble').first().addClass('imgBubble');
         //var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
-        var myBotMessage = '<video autoplay loop><source src="' + url + 'vid/' + myBotSupporting + '/' + myBotSupporting + '-' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
+        var myBotMessage = '<video autoplay loop muted><source src="' + url + 'vid/' + myBotSupporting + '/' + myBotSupporting + '-' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
 
       } else { // text
         getRandomFrom( myBot.messages ); // returns "myValue"
@@ -325,7 +409,7 @@
 
       var loadingTimeout = setTimeout(function() {
         processingPost = false;
-        myListElement.append(myProfilePic).append(myBubble).prependTo( feedList );
+        myListElement.append(myProfilePic).append(myBubble).prependTo( feedList ).attr( 'data-botSupporting', myBotSupporting ); //.data( 'data-botSupporting', myBotSupporting )
         jumpBall( myInventoryProfilePic, myProfilePic );
         setTimeout( function() {
           myListElement.animate({maxHeight: '100vh', opacity: '1'}, 300, "swing");
