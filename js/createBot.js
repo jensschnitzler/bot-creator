@@ -367,7 +367,7 @@
 
         //$('.myBubble').first().addClass('imgBubble');
         //var myBotMessage = '<img src="' + url + 'vid/' + randomVid + '" class="" alt="error">';
-        var myBotMessage = '<video autoplay loop muted><source src="' + url + 'vid/' + myBotSupporting + '/' + myBotSupporting + '-' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
+        var myBotMessage = '<video playsinline autoplay loop muted><source src="' + url + 'vid/' + myBotSupporting + '/' + myBotSupporting + '-' + randomVid + '" type="video/mp4" />Your browser does not support the video tag.</video>';
 
       } else { // text
         getRandomFrom( myBot.messages ); // returns "myValue"
@@ -432,6 +432,15 @@
     } else {
       alert('newPost failed: No bot data available! // Already processing Post!');
     }
+
+
+    /* make videos that are not already playing play */
+    $('video').trigger('play');
+    /*
+    $('video').each(function() {
+        this.paused ? this.play() : this.pause();
+    });
+    */
   };
 
   function jumpBall( element1, element2 ) {
