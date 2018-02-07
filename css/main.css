@@ -308,7 +308,7 @@ hr {
   height: auto;
 }
 
-.myBubble p {
+.myBubble p, .myBubble p * {
   /* for long written text and notifications */
   font-family: 'HelveticaLightExtended', serif;
   font-style: normal;
@@ -330,8 +330,10 @@ hr {
   max-width: 23rem;
 }
 
-.myBubble p.hashtag {
+.myBubble .hashtag {
   color: #6689ff;
+  text-transform: inherit;
+  font-size: inherit;
 }
 
 .myBubble .stats {

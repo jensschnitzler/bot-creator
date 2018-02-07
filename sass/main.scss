@@ -336,15 +336,17 @@
       height: auto;
     }
 
-    p {
+    p, p * {
       @include font-style-long;
       text-align: left;
       text-transform: none;
       max-width: 23rem;
+    }
 
-      &.hashtag {
-        color: $color-ProfileFill;
-      }
+    .hashtag {
+      color: $color-ProfileFill;
+      text-transform: inherit;
+      font-size: inherit;
     }
 
     .stats {

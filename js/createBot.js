@@ -230,7 +230,7 @@
     var myMessagesArray = window[ mySupportingVal + 'MessagesArray' ]; // window[…] is needed to turn the string into a variable-name
     console.log( 'myMessagesArray: ' + myMessagesArray );
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 20; i++) {
       /* get random message from myMessagesArray */
       getRandomFrom( myMessagesArray ); // myMessagesArray
       var myMessage = myValue;
@@ -348,12 +348,12 @@
       var myBotSupporting = myBot.supporting;
 
       /* text, picture or video message? */
-      var messageKey = Math.random() * 4; // get random key: 0–4
+      var messageKey = Math.random() * 6; // get random key: 0–4
       console.log( 'random message key: ' + messageKey );
       console.log( 'myBot.supporting: ' + myBot.supporting );
 
       if( messageKey <= 1 ){ // image
-        var picArray = [ '0.jpg','1.jpg','2.jpg' ];
+        var picArray = [ '0.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg' ];
         getRandomFrom( picArray ); // returns myValue
         var randomPic = myValue;
 
@@ -411,6 +411,7 @@
         processingPost = false;
         myListElement.append(myProfilePic).append(myBubble).prependTo( feedList ).attr( 'data-botSupporting', myBotSupporting ); //.data( 'data-botSupporting', myBotSupporting )
         jumpBall( myInventoryProfilePic, myProfilePic );
+        highlight( myListElement );
         setTimeout( function() {
           myListElement.animate({maxHeight: '100vh', opacity: '1'}, 300, "swing");
         }, 100);
