@@ -371,6 +371,9 @@
 
       } else { // text
         getRandomFrom( myBot.messages ); // returns "myValue"
+        if( myValue == null ){
+          myValue = 'visit @botCreator';
+        }
         var myBotMessage = '<p>' + myValue + '</p>';
       }
 

@@ -72,20 +72,20 @@
     if( postCounter === 1 ){
       //myErrorFunction( 'picMessage' );
     }
-    if( postCounter === 2 ){
+    if( postCounter === 3 ){
       myErrorFunction( 'flicker' );
     }
-    if( postCounter === 3 ){
+    if( postCounter === 4 ){
       exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
     }
-    if( postCounter === 4 ){
+    if( postCounter === 5 ){
       //myErrorFunction( 'picMessage' );
       myErrorFunction( 'glitchRepeat' );
     }
-    if( postCounter === 5 ){
+    if( postCounter === 6 ){
       //myErrorFunction( 'vidMessage' );
     }
-    if( postCounter === 8 ){
+    if( postCounter === 7 ){
       myErrorFunction( 'autoPost' );
     }
     if( postCounter === 4 ){
@@ -133,27 +133,27 @@
       if( botCounter === botLimit+2 ){
 
       }
-      if( botCounter === botLimit+4 ){
+      if( botCounter === botLimit+5 ){
         myErrorFunction( 'distortFace' );
         myErrorFunction( 'autoPost' );
       }
-      if( botCounter === botLimit+6 ){
+      if( botCounter === botLimit+7 ){
         glitchStripes();
       }
-      if( botCounter === botLimit+8 ){
+      if( botCounter === botLimit+9 ){
         myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
       }
-      if( botCounter === botLimit+10 ){
+      if( botCounter === botLimit+11 ){
         myErrorFunction( 'changeBackground' );
       }
-      if( botCounter === botLimit+12 ){
+      if( botCounter === botLimit+13 ){
         flickerTextInterval();
         flickerInterval();
       }
-      if( botCounter === botLimit+14 ){
+      if( botCounter === botLimit+15 ){
         exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
       }
-      if( botCounter === botLimit+20 ){
+      if( botCounter === botLimit+21 ){
         myErrorFunction( 'silva' );
       }
 

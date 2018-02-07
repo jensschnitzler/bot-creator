@@ -4,6 +4,6 @@
 "Tories in turmoil",
 "unfair!",
 "leave",
-"Brexit saves £350m a week"
+"Brexit saves £350m a week",
 "BeLEAVE in Britain!"
 ]
