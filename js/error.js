@@ -219,7 +219,7 @@
 
   function changeBackground(){
     $( 'body' ).animate({body: '#000'});
-    $( '.overlay.error' ).fadeTo( 60000 , .3, function() {
+    $( '.overlay.error' ).fadeTo( 80000 , .3, function() {
       // Animation complete.
     });
   }
