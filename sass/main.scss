@@ -805,9 +805,12 @@
     position: absolute;
     transition: left 0s, top 0s;
     max-width: 46vw;
+    max-height: 98vh;
+    width: auto;
+    height: auto;
     //margin-left: -23vw;
-    top: 45vh;
-    left: 25vw;
+    top: 1vh;
+    left: 27vw;
     z-index: 200;
     padding:  0 .8rem .8rem .8rem;
     border-radius: 1rem;

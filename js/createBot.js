@@ -7,9 +7,9 @@
   /* array/object that contains all the bots */
   var myBotsArray = [];
   var botCounter = -1;
-  var botLimit = 5;
+  var botLimit = 4;
   var postCounter = -1;
-  var postLimit = 12;
+  var postLimit = 11;
   /* This should be done as soon as the website has loaded: Get all possible bot data into cool arrays with "getAjaxBotData()" */
   var myArray = [];
   var myNamesArray = [];
@@ -430,7 +430,7 @@
       }
 
     } else {
-      alert('newPost failed: No bot data available! // Already processing Post!');
+      // alert('newPost failed: No bot data available! // Already processing Post!');
     }
 
 
@@ -545,7 +545,7 @@
     myTerminalContent.prepend('<p>bot-autopopulation initiated</p>');
 
     if ( loadCycleTime == null ){
-      loadCycleTime = 5000;
+      loadCycleTime = 2000 + (botCounter * 50); // slower when more bots are present
     }
 
     setInterval(function () {
@@ -568,6 +568,11 @@
 
   function loadBot( myTime ) {
     console.log('## loadBot ##');
+
+    if ( myTime == null || !myTime > 0 ){
+      var myTime = 2000;
+    }
+
     botCounter++; // increase botCounter by 1
     loadProcess( myTime, '.loadBot', newBot );
     $('.inventory-unit').removeClass('hidden');
@@ -582,7 +587,7 @@
     }
 
     if ( myTime == null || !myTime > 0 ){
-      var myTime = 5000;
+      var myTime = 2000;
     }
 
     postCounter++; // increase postCounter by 1
@@ -632,7 +637,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
   $( document ).on("click", ".create-bot", function() {
     var myButton = $( this );
     if( !myButton.hasClass( 'clicked' ) ){
-      var loadingTime = 3000;
+      var loadingTime = 1500;
       myButton.addClass( 'clicked' );
       botClicks++; // increase botClicks by 1
 
@@ -665,7 +670,7 @@ $( function() { //jQuery short-hand for "$(document).ready(function() { ... });"
       $('.profilePic').addClass( 'clicked' ); // disable all profilePics
 
       console.log('create-post clicked - postCounter: ' + postCounter );
-      var loadingTime = 3000;
+      var loadingTime = 1500;
       var myBotID = myButton.data( 'data-botID' );
       var myBot = myBotsArray[ myBotID ];
       loadPost( loadingTime, myBot );

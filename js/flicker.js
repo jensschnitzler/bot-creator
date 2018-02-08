@@ -49,6 +49,15 @@
 
     console.log( '## exchangeWords ##' );
 
+    if ( element1 == null ){
+      element1 = $('.myBubble p').random();
+      //element = $('.myBubble').random().find('p').random();
+    }
+
+    if ( element2 == null ){
+      element2 = $('.myBubble p').random();
+    }
+
     var string1 = element1.html();
     var string2 = element2.html();
 

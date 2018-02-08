@@ -3,11 +3,18 @@
 
 /*--- Global Variables ---*/
   var supportLevel = $('.support-level');
+  var closeTimer;
 
 /*--- Sound Variables ---*/
 
 
 /*--- Global Functions ---*/
+  function supportCloseTimer() {
+    closeTimer = setTimeout(function(){
+      closeOverlays();
+    }, 15000);
+  }
+
   function support1(){
     console.log( '## support1 ##' );
     createElement('support');

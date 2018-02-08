@@ -19,7 +19,7 @@ $( function() {
   console.log( '### SUICIDE.JS ###' );
 
   var mySuicideInterval = setInterval(function(){
-    if( botCounter > 30 || postCounter > 50 ){
+    if( botCounter > 40 || postCounter > 60 ){
       clearInterval( mySuicideInterval );
 
       console.log( '## … commiting suicide … ##' );

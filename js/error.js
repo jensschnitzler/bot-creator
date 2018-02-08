@@ -18,6 +18,10 @@
     }, randomTime );
   }
 
+  function killPost(){
+    $('.feed-post').random().remove();
+  }
+
   function myErrorFunction( code ){
 
     console.log('ERROR FUNCTION');
@@ -50,16 +54,19 @@
       changeBackground();
 
     } else if( code === 'glitchRepeat' ){ // post-related error
-      randomInterval( glitchRepeat, 4000, 10000 );
+      randomInterval( glitchRepeat, 4000, 15000 );
 
     } else if( code === 'distortFace' ){
-      randomInterval( distortFace, 15000, 35000 );
+      randomInterval( distortFace, 15000, 90000 );
 
     } else if( code === 'silva' ){
       randomInterval( silva, 20000, 35000 );
 
-    }
+    } else if( code === 'exchangeWords' ){
 
+      randomInterval( exchangeWords, 10000, 20000 )
+
+    }
   }
 
   function postCounterEvents(){
@@ -75,8 +82,9 @@
     if( postCounter === 3 ){
       myErrorFunction( 'flicker' );
     }
-    if( postCounter === 4 ){
-      exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
+    if( postCounter === 6 ){
+      myErrorFunction( 'exchangeWords' )
+      //exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
     }
     if( postCounter === 5 ){
       //myErrorFunction( 'picMessage' );
@@ -100,7 +108,7 @@
 
     }
     if( postCounter === 13 ){
-      exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
+      //exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
     }
     if( postCounter >= 15 ){
       //support3();
@@ -108,6 +116,10 @@
     if( postCounter === 20 ){
       support3();
     }
+    if( postCounter >= 20 ){
+      killPost();
+    }
+
     if( postCounter === 30 ){
       support4();
     }
@@ -131,11 +143,10 @@
         myTerminalHead.html('alert');
       }
       if( botCounter === botLimit+2 ){
-
-      }
-      if( botCounter === botLimit+5 ){
-        myErrorFunction( 'distortFace' );
         myErrorFunction( 'autoPost' );
+      }
+      if( botCounter === botLimit+6 ){
+        myErrorFunction( 'distortFace' );
       }
       if( botCounter === botLimit+7 ){
         glitchStripes();
@@ -143,7 +154,7 @@
       if( botCounter === botLimit+9 ){
         myTerminalContent.prepend('<p>network alert:<br>bot population exceeds human population on current network</p>');
       }
-      if( botCounter === botLimit+11 ){
+      if( botCounter === botLimit+10 ){
         myErrorFunction( 'changeBackground' );
       }
       if( botCounter === botLimit+13 ){
@@ -151,9 +162,9 @@
         flickerInterval();
       }
       if( botCounter === botLimit+15 ){
-        exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
+        //exchangeWords( $('.myBubble p').random(), $('.myBubble p').random() );
       }
-      if( botCounter === botLimit+21 ){
+      if( botCounter === botLimit+18 ){
         myErrorFunction( 'silva' );
       }
 
@@ -208,14 +219,14 @@
 
   function changeBackground(){
     $( 'body' ).animate({body: '#000'});
-    $( '.overlay.error' ).fadeTo( 1200000 , .3, function() {
+    $( '.overlay.error' ).fadeTo( 60000 , .3, function() {
       // Animation complete.
     });
   }
 
   function distortFace(){
     console.log( '## distortFace ##' );
-    var myFace = $( '.profilePic:visible' ).random();
+    var myFace = $( '.profilePic:visible' ).random().first();
     myFace.css( 'background-size','300% 100%' ); // animate with css transition!
 
     /* // following doesnt work

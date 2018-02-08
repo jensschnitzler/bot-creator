@@ -8,7 +8,7 @@
   function like(){
     console.log( '## like ##' );
 
-    var intervalTime = 10000;
+    var intervalTime = 5000;
 
     var likeInterval = setInterval(function(){
 

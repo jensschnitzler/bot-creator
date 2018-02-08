@@ -1,10 +1,17 @@
 /*--- Global Variables ---*/
   var posCounter = 0;
+  var docHeight = myDoc.height();
+  var docWidth = myDoc.width();
+  var winHeight = myWindow.height();
+  var winWidth = myWindow.width();
+
 
 /*--- Functions ---*/
 
   function closeOverlays() {
     $('.blur').removeClass('blur');
+    $('.window').hide();
+    clearTimeout(closeTimer); // in support.js
 
     $('.level').not('.main-level, .hidden').each(function(){
 
@@ -78,6 +85,7 @@
       $('.support-level').removeClass('hidden').removeClass('removing').show();
       $('.main-level').addClass('blur');
       setCenterPosition( newWin );
+      supportCloseTimer();
 
     } else {
       //setRandomPosition( newWin );
@@ -85,28 +93,85 @@
     }
   };
 
+  function testWindowSize() {
+    var testSize = $( "<div/>" ).appendTo( $('body') ).addClass( 'debug' ).css({
+         'position' : 'fixed',
+         'width' : '50vw',
+         'height' : '50vh',
+         'opacity' : '0.5',
+         'pointer-events' : 'none',
+         'z-index' : '9000'
+      });
+    testSize.html( docWidth + ' x ' + docHeight + '<br>' + winWidth + ' x ' + winHeight );
+  }
+
   function setCenterPosition( element ) {
-    var docHeight = myDoc.height();
-    var docWidth = myDoc.width();
+
     var winHeight = myWindow.height();
     var winWidth = myWindow.width();
-    var eHeight = element.height();
-    var eWidth = element.width();
+    var eHeight = element.outerHeight(); // window dimensions are calculated falsely :-(
+    var eWidth = element.outerWidth();
+
+    console.log( eWidth + ' x ' + eHeight );
 
     posCounter++;
-    var y = (winHeight*0.5)-(eHeight*0.6);
-    var x = (winWidth*0.5)-(eWidth*0.5);
+    var eTop = (winHeight*0.5)-(eHeight*0.6);
+    var eLeft = (winWidth*0.5)-(eWidth*0.5);
+
+    element.css({
+         'position' : 'fixed',
+         //'left' : eLeft + 'px',
+         'top' :  eTop + 'px'
+      });
     /* make new class */
+    /*
     $("<style>")
       .prop("type", "text/css")
       .html("\
-      .pos" + posCounter + " {\
-          position: absolute;\
-          top:" + y + "px;\
-          left:" + x + "px;\
-      }")
+        .pos" + posCounter + " {\
+            position: absolute;\
+            top:" + eTop + "px;\
+            left:" + eLeft + "px;\
+        }")
       .appendTo( "head" );
-    element.addClass("pos" + posCounter ).removeAttr('style');
+    */
+    element.addClass("pos" + posCounter );
+
+    /* 3) get actual element offset */
+
+    var eHeight = element.outerHeight();
+    console.log('eHeight: ' + eHeight);
+    var eWidth = element.outerWidth();
+    console.log('eWidth: ' + eWidth);
+
+    var eBottom = eHeight + eTop;
+    console.log('eBottom: ' + eBottom);
+    var eRight = eWidth + eLeft;
+    console.log('eRight: ' + eRight);
+
+    var diffRight = eRight - winWidth;
+    console.log('diffRight: ' + diffRight);
+    var diffBottom = eBottom - winHeight;
+    console.log('diffBottom: ' + diffBottom);
+
+    /* 4) correct offset difference */
+
+    if( diffRight > 0 ){
+      //element.addClass('debug');
+      element.css({
+          'left':'-=' + diffRight + 'px'
+      });
+
+    }
+
+    if( diffBottom > 0 ){
+      //element.addClass('debug');
+      element.css({
+          'top': '-=' + diffBottom + 'px'
+      });
+      element.removeAttr('style');
+    }
+
   };
 
   function setRandomPosition( element ) {
@@ -138,9 +203,9 @@
 
     /* 3) get actual element offset */
 
-    var eHeight = element.height();
+    var eHeight = element.outerHeight();
     console.log('eHeight: ' + eHeight);
-    var eWidth = element.width();
+    var eWidth = element.outerWidth();
     console.log('eWidth: ' + eWidth);
     //var eTop = element.offset().top; //get the offset top of the element
     //console.log('eTop: ' + eTop);
@@ -168,7 +233,7 @@
     if( diffBottom > 0 ){
       //element.addClass('debug');
       element.css({
-          'top': '-=' + diffBottom + 'px',
+          'top': '-=' + diffBottom + 'px'
       });
     }
 
@@ -178,6 +243,8 @@
 
 $( document ).ready(function() {
   console.log("### WINDOWS.JS ###");
+
+  testWindowSize();
 
   /*
   // DEFAULTS:
