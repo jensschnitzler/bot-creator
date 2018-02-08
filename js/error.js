@@ -12,9 +12,9 @@
 
   function randomInterval( myFunction, minTime, maxTime ){
     setInterval(function(){
+        //maxTime = maxTime - minTime;
+        randomTime = Math.floor( ( Math.random() * maxTime ) + minTime );
         myFunction();
-        maxTime = maxTime - minTime;
-        randomTime = Math.floor((Math.random() * maxTime) + minTime);
     }, randomTime );
   }
 

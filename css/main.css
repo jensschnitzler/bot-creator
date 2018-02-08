@@ -791,14 +791,15 @@ hr {
 
 /* WINDOW */
 .window {
-  position: absolute;
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
   transition: left 0s, top 0s;
   max-width: 46vw;
   max-height: 98vh;
   width: auto;
   height: auto;
-  top: 1vh;
-  left: 27vw;
   z-index: 200;
   padding: 0 .8rem .8rem .8rem;
   border-radius: 1rem;

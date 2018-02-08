@@ -121,7 +121,7 @@
     element.css({
          'position' : 'fixed',
          //'left' : eLeft + 'px',
-         'top' :  eTop + 'px'
+         //'top' :  eTop + 'px'
       });
     /* make new class */
     /*
@@ -154,7 +154,8 @@
     var diffBottom = eBottom - winHeight;
     console.log('diffBottom: ' + diffBottom);
 
-    /* 4) correct offset difference */
+    // 4) correct offset difference
+    /*
 
     if( diffRight > 0 ){
       //element.addClass('debug');
@@ -171,6 +172,7 @@
       });
       element.removeAttr('style');
     }
+    */
 
   };
 
@@ -223,19 +225,25 @@
 
     /* 4) correct offset difference */
 
-    if( diffRight > 0 ){
+    /*
+
+    if( diffRight >= 0 ){
       //element.addClass('debug');
       element.css({
-          'left':'-=' + diffRight + 'px'
+          'left':'-=' + diffRight + 100 + 'px',
+          'margin-left':'-=' + diffRight + 'px'
       });
     }
 
-    if( diffBottom > 0 ){
+    if( diffBottom >= 0 ){
       //element.addClass('debug');
       element.css({
-          'top': '-=' + diffBottom + 'px'
+          'top': '-=' + diffBottom + 100 + 'px',
+          'margin-top':'-=' + diffBottom + 'px'
       });
     }
+
+    */
 
   };
 
@@ -244,7 +252,7 @@
 $( document ).ready(function() {
   console.log("### WINDOWS.JS ###");
 
-  testWindowSize();
+  //testWindowSize();
 
   /*
   // DEFAULTS:
